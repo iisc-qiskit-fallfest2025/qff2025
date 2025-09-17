@@ -386,6 +386,7 @@ body {
     padding: 1.5rem;
     border-radius: 12px;
     text-align: left;
+    gap: 0.3rem;
 }
 
 .club-card {
