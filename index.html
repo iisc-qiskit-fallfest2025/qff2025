@@ -11,13 +11,15 @@
         <!-- Header -->
         <header class="site-header">
             <div class="logo">
-                <img src="assets/Top-qiskit-logo.png" alt="Qiskit" width="50" />
-                <span class="logo-text">IISc QFF 2025</span>
+                <img src="assets/Top-qiskit-logo.png" alt="Qiskit" width="35" />
+                <nav class="nav-main"><a href="#"><span class="logo-text">IISc Qiskit Fall Fest 2025</span></a></nav>
             </div>
             <nav class="nav-links" id="nav-links">
                 <a href="#details">Details</a>
+                <a href="https://docs.google.com/document/d/e/2PACX-1vSsS--oK1_wnLFpL49v24OksM9GULGYK4f6avmO34VwYYhD9nViaS3q5kd1zZ3T9VE0WVZnB69ML7Js/pub" target="_blank">Hackathon</a>
                 <a href="#schedule">Schedule</a>
                 <a href="#speakers">Speakers</a>
+                <a href="#collaborations">Collaborations</a>
             </nav>
             <div class="hamburger" id="hamburger">
                 &#9776;
@@ -25,7 +27,7 @@
         </header>
 
         <!-- Hero -->
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero-content">
                 <h1>IISc x Qiskit Fall Fest 2025</h1>
                 <p class="hero-date">October 28 - November 02</p>
@@ -42,10 +44,10 @@
                 <span id="minutes" class="countdown-number">00</span>Mins
                 <span id="seconds" class="countdown-number">00</span>Sec
             </div>
-            <p class="extra-bold">
+            <p class="extra-bold-1">
                 Explore quantum computing at IISc x Qiskit Fall Fest 2025!
             </p>
-            <p class="extra-bold muted">
+            <p class="extra-bold-1 muted">
                 Talks, Hands-on sessions, and Hackathon for curious minds.
             </p>
         </section>
@@ -54,23 +56,17 @@
         <section class="about">
             <div class="about-content">
                 <h2 id="about">About the Event</h2>
-                <p style="visibility: hidden">Hi from Aditya</p>
                 <p class="muted">
-                    Qiskit Fall Fest 2025 is a vibrant hackathon where
-                    participants dive into real-world quantum development—no
-                    prior quantum experience required!
+                    The six-day program will include lectures and hands-on sessions ranging from basics to Quantum Machine Learning, Quantum Optimization, Fault Tolerance, and Quantum Error Correction, led by researchers from IBM Quantum and IISc. All sessions will be held in hybrid mode.
                 </p>
-                <p style="visibility: hidden">Hi from Aditya</p>
                 <p class="muted">
-                    Over six days, you'll explore coding challenges, workshops,
-                    and talks from leading quantum professionals. Expect
-                    learning, collaboration, and fun.
+                    The event will culminate in a 24-hour Hackathon based on Qiskit with prompts spanning various applications of quantum computing. More details about the hackathon will be announced soon — <a href="https://docs.google.com/document/d/e/2PACX-1vSsS--oK1_wnLFpL49v24OksM9GULGYK4f6avmO34VwYYhD9nViaS3q5kd1zZ3T9VE0WVZnB69ML7Js/pub" target="_blank" class="no-deco">Hackathon Details</a>
                 </p>
-                <p style="visibility: hidden">Hi from Aditya</p>
                 <p class="muted">
-                    Whether you're a beginner or seasoned developer, Fall Fest
-                    welcomes anyone passionate about pushing the boundaries of
-                    technology and innovation.
+                    Other than the hackthon, daily challenges will be provided to keep participants engaged, earning them a spot on a leaderboard based on their performance. Top performers will win IBM Quantum swag.
+                </p>
+                <p class="muted">
+                    Participants from IISc can attended the sessions in-person and participants from outside will be able to join all sessions online. All participants will receive participation certificates from IBM Quantum.
                 </p>
             </div>
             <img
@@ -83,7 +79,7 @@
         <!-- Schedule -->
         <section id="schedule" class="schedule">
             <h2>Schedule</h2>
-            <h4>Detailed schedule to be announced soon.</h4>
+            <h3>Detailed schedule to be announced soon.</h3>
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-date">October 28</div>
@@ -92,7 +88,7 @@
                             Kickoff
                         </p>
                         <p>
-                            Introduction to Quantum Computing
+                            Quantum Computing Intro
                         </p>
                         <p>
                             Qiskit 101 - Hands-on
@@ -101,7 +97,7 @@
                 </div>
 
                 <div class="timeline-item right">
-                    <div class="timeline-date">October 29 - October 30</div>
+                    <div class="timeline-date">October 29 to October 30</div>
                     <div class="timeline-content">
                         <p>
                             Online Talks
@@ -119,7 +115,7 @@
                             In-person Talks
                         </p>
                         <p>
-                            Hands-on Session
+                            Hands-on Sessions
                         </p>
                     </div>
                 </div>
@@ -128,10 +124,13 @@
                     <div class="timeline-date">November 1</div>
                     <div class="timeline-content">
                         <p>
-                            In-person Talks and Hands-on Sessions
+                            In-person Talks
                         </p>
                         <p>
-                            Commencement of Hackathon - 2:00PM IST
+                            Hands-on Sessions
+                        </p>
+                        <p>
+                            Hackathon Begins!
                         </p>
                     </div>
                 </div>
@@ -140,7 +139,7 @@
                     <div class="timeline-date">November 2</div>
                     <div class="timeline-content">
                         <p>
-                            Hackathon Ends - 2:00PM IST
+                            Hackathon Ends!
                         </p>
                         <p>
                             Closing Ceremony
@@ -164,7 +163,7 @@
 
         <!-- Collaborations Section -->
         <section id="collaborations" class="collaborations">
-            <h2>Collaborations</h2>
+            <h2>Supported by</h2>
             <div class="collab-grid">
                 <div class="collab-card">
                     <div class="collab-text">
@@ -206,7 +205,7 @@
         <section id="club-collaborations" class="collaborations">
             <h2>Club Collaborations</h2>
             <div class="collab-grid">
-                <div class="collab-card club-card">
+                <div class="club-card">
                     <div class="collab-logo">
                         <img src="assets/LOGO_white.webp" alt="Ensemble Logo" />
                     </div>
@@ -216,7 +215,7 @@
                     </div>
                 </div>
 
-                <div class="collab-card club-card">
+                <div class="club-card">
                     <div class="collab-logo">
                         <img src="assets/Logo_transparent.png" alt="Databased Logo" />
                     </div>
@@ -232,10 +231,10 @@
         <section class="banner">
             <div class="banner-content">
                 <h2>Ready to Join?</h2>
-                <p>Join us at IISc x Qiskit Fall Fest 2025!</p>
+                <p>Your quantum adventure starts here.</p>
                 <button class="banner-button" onclick="window.open('https://forms.gle/kquY46hEUCwqUKi27', '_blank')">Register Now</button>
             </div>
-            <img src="assets/hFbUryq002UAq4y8yp2tQxSHDXs.png.webp" alt="Register Now" />
+            <!--<img src="assets/CTA-bottom-section-bg.png" alt="Register Now" />-->
         </section>
 
         <!-- Footer -->
@@ -245,23 +244,24 @@
                     <h4>Event</h4>
                     <ul>
                         <li><a href="#details">Details</a></li>
+                        <li><a href="https://docs.google.com/document/d/e/2PACX-1vSsS--oK1_wnLFpL49v24OksM9GULGYK4f6avmO34VwYYhD9nViaS3q5kd1zZ3T9VE0WVZnB69ML7Js/pub" target="_blank" class="no-deco">Hackathon</a></li>
                         <li><a href="#schedule">Schedule</a></li>
                         <li><a href="#speakers">Speakers</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Community</h4>
+                    <h4>Collaborations</h4>
                     <ul>
-                        <li><a href="#">Organizers</a></li>
-                        <li><a href="#">Collaborators</a></li>
-                        <li><a href="#">Sponsors</a></li>
+                        <li><a href="#">IQTI</a></li>
+                        <li><a href="#">Ensemble</a></li>
+                        <li><a href="#">Databased</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Social</h4>
                     <ul>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Youtube</a></li>
+                        <li><a href="#">Instagram</a></li>
                         <li><a href="#">LinkedIn</a></li>
                     </ul>
                 </div>

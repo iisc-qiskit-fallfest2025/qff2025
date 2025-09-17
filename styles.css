@@ -4,7 +4,7 @@
 
     --color-bg: #0a0f1c;
     --color-text: #e6eaf2;
-    --color-muted: #777777;
+    --color-muted: #a3a3a3;
 
     --color-accent-1: #ffd23f;
     --color-accent-2: #ff3d81;
@@ -38,7 +38,7 @@ body {
 
 .site-header .logo {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -54,6 +54,14 @@ body {
     margin-left: 1.5rem;
     text-decoration: none;
     font-weight: 500;
+}
+.nav-main a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+.no-deco {
+    color: var(--color-text);
+    text-decoration: underline;
 }
 
 .nav-links a:hover {
@@ -79,6 +87,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    margin-top: -4px;
+    scroll-margin-top: 30px;
 }
 
 .hero h1 {
@@ -133,12 +143,12 @@ body {
 
 .countdown {
     font-family: var(--font-heading);
-    font-size: 42px;
+    font-size: 38px;
     font-weight: 525;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
     color: #9ba6bf;
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
 }
 
 .countdown-number {
@@ -152,7 +162,18 @@ body {
     letter-spacing: -0.03em;
     width: 415px;
     height: 60px;
-    line-height: 30px;
+    line-height: 25px;
+    overflow-wrap: break-word;
+}
+
+.extra-bold-1 {
+    font-weight: 700;
+    font-size: 26px;
+    font-variation-settings: "opsz" 32, "wght" 700;
+    letter-spacing: -0.03em;
+    width: 415px;
+    height: 55px;
+    line-height: 25px;
     overflow-wrap: break-word;
 }
 
@@ -160,15 +181,27 @@ body {
     color: var(--color-muted);
 }
 
+#details {
+    scroll-margin-top: 58px;
+}
+
 /* About */
 .about {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1.5rem;
     display: flex;
     gap: 2rem;
     align-items: flex-start;
     justify-content: space-between;
+}
+
+.about-content p {
+    margin-bottom: 0.8rem;
+}
+
+.about h2 {
+    margin-bottom: 0.4rem;
 }
 
 /* Schedule */
@@ -176,13 +209,19 @@ body {
     padding: 4rem 2rem;
     text-align: center;
     background: var(--color-bg);
+    scroll-margin-top: 4px;
 }
 
 .schedule h2 {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 0.8rem;
     font-family: var(--font-heading);
     color: var(--color-text);
+}
+
+.schedule h3{
+    margin-bottom: 2rem;
+    color: var(--color-muted);
 }
 
 .timeline {
@@ -250,14 +289,15 @@ body {
 
 .timeline-content p {
     margin: 0.5rem 0;
-    color: var(--color-muted);
+    color: var(--color-text);
     font-size: 0.95rem;
 }
 
 /* Speakers */
 .speakers {
-    padding: 4rem 2rem;
+    padding: 3.4rem 2rem 4rem 2rem;
     text-align: center;
+    scroll-margin-top: 15px;
 }
 
 .speakers h2 {
@@ -359,15 +399,27 @@ body {
     transition: background 0.2s ease;
 }
 
+
+
 .collaborations {
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 2rem;
     text-align: center;
     max-width: 1080px;
     margin: 0 auto;
+    scroll-margin-top: 10px;
 }
 
-.collaborations h2 {
+#club-collaborations {
+    padding: 0 2rem 2rem;
+}
+
+#club-collaborations h2 {
     font-size: 2rem;
+}
+
+
+.collaborations h2 {
+    font-size: 2.5rem;
     margin-bottom: 2rem;
     color: var(--text-primary);
 }
@@ -386,25 +438,29 @@ body {
     padding: 1.5rem;
     border-radius: 12px;
     text-align: left;
-    gap: 4rem;
+    gap: 1rem;
 }
 
 .club-card {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
+    background: var(--card-bg, #1a1a2e);
+    padding: 1.5rem;
+    border-radius: 12px;
 }
 
 .collab-card h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
     color: var(--text-primary);
     text-align: center;
 }
 
 .collab-card p {
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    text-align: center;
+    font-size: 0.8rem;
+    text-align: justify;
 }
 
 .collab-logo img {
@@ -413,20 +469,31 @@ body {
 }
 
 /* Banner */
-.banner {
+/*.banner {
     display: flex;
-    max-width: 1080px;
+    height: ;
     margin: 0 auto;
     background-color: #d4bcff;
     justify-content: center;
     align-items: center;
-    padding: 5rem;
+    padding: 2rem;
+}*/
+
+.banner {
+    display: flex;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 12/7; /* match your image */
+    background: url("assets/CTA-bottom-section-bg.png") center/contain no-repeat;
+    align-items: center;
 }
+
 
 .banner-content {
     width: 50%;
     color: #0b1220;
     font-size: 26px;
+    margin: 0 0 0 9.5rem;
 }
 
 .banner-button {
@@ -438,22 +505,19 @@ body {
     font-size: 24px;
     font-weight: 500;
     padding: 0.5rem 1rem;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 }
 
-.banner img {
-    width: 50%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+.banner-button:hover {
+    cursor: pointer;
 }
 
 /* Footer */
 .footer {
     background: #0b1220;
     color: #ddd;
-    padding: 60px 20px 30px;
-    margin-top: 3rem;
+    padding: 25px 20px 30px;
+    margin-top: -4rem;
 }
 
 .footer-grid {
@@ -462,6 +526,8 @@ body {
     gap: 24px;
     max-width: 1000px;
     margin: 0 auto 30px;
+    /*place-content: center;*/
+    place-items: center;
 }
 
 .footer h4 {
@@ -488,6 +554,7 @@ body {
 }
 
 .footer-copy {
+    padding-top: 1rem;
     text-align: center;
     font-size: 0.9rem;
     color: #888;
