@@ -4,6 +4,7 @@
 
     --color-bg: #0a0f1c;
     --color-text: #e6eaf2;
+    --color-text-toned-down: #e6eaf2dd;
     --color-muted: #a3a3a3;
 
     --color-accent-1: #ffd23f;
@@ -114,6 +115,8 @@ body {
 
 .hero-button:hover {
     cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .hero-date {
@@ -181,15 +184,27 @@ body {
     color: var(--color-muted);
 }
 
+.whitetext {
+    color: var(--color-text-toned-down);
+    text-align: justify;
+}
+.whitetext-unjust {
+    color: var(--color-text-toned-down);
+}
+
+#eligibility {
+    padding-bottom: 0.1rem;
+}
+
 #details {
-    scroll-margin-top: 58px;
+    scroll-margin-top: 65px;
 }
 
 /* About */
 .about {
-    max-width: 1000px;
+    max-width: 1030px;
     margin: 0 auto;
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
     display: flex;
     gap: 2rem;
     align-items: flex-start;
@@ -200,8 +215,10 @@ body {
     margin-bottom: 0.8rem;
 }
 
-.about h2 {
-    margin-bottom: 0.4rem;
+#about-title {
+    max-width: 1045px;
+    margin: 0 auto;
+    padding: 1.5rem 0 0.2rem 0;
 }
 
 /* Schedule */
@@ -242,7 +259,7 @@ body {
 }
 
 .timeline-item {
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     position: relative;
     width: 50%;
 }
@@ -253,21 +270,45 @@ body {
     width: 16px;
     height: 16px;
     right: -10px;
+    top: 50%;
     background: var(--color-accent-1);
     border: 3px solid #fff;
-    top: 20px;
     border-radius: 50%;
     z-index: 1;
 }
 
+/* Horizontal connector line */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: -10px;
+  height: 3px;
+  background: var(--color-accent-1);
+  z-index: 0;
+}
+
+
+.timeline-item.left::after {
+  left: 89.5%;          /* start at circle center */
+  right: auto;
+  width: 1.5rem;  /* reach content box */
+}
+
+.timeline-item.right::after {
+  right: 89.5%;          /* start at circle center */
+  left: auto;
+  width: 1.5rem;  /* reach content box */
+}
+
 .timeline-item.left {
     left: 0;
-    text-align: right;
+    text-align: center;
 }
 
 .timeline-item.right {
     left: 50%;
-    text-align: left;
+    text-align: center;
 }
 
 .timeline-item.right::before {
@@ -295,14 +336,16 @@ body {
 
 /* Speakers */
 .speakers {
+    max-width: 1030px;
     padding: 3.4rem 2rem 4rem 2rem;
     text-align: center;
+    margin: 0 auto;
     scroll-margin-top: 15px;
 }
 
 .speakers h2 {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     font-family: var(--font-heading);
     color: var(--color-text);
 }
@@ -310,9 +353,10 @@ body {
 .speakers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding-bottom: 1rem;
 }
 
 .speaker-card {
@@ -321,17 +365,21 @@ body {
     border-radius: 16px;
     text-align: center;
 }
+.speaker-card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
 
 .speaker-card img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
     object-fit: cover;
 }
 
 .speaker-card h3 {
-    margin: 0.5rem 0;
+    margin: 0.2rem 0;
     font-size: 1.1rem;
     color: var(--color-text);
 }
@@ -402,11 +450,11 @@ body {
 
 
 .collaborations {
-    padding: 4rem 2rem 2rem;
+    padding: 3rem 2rem 2rem;
     text-align: center;
     max-width: 1080px;
     margin: 0 auto;
-    scroll-margin-top: 10px;
+    scroll-margin-top: 20px;
 }
 
 #club-collaborations {
@@ -427,9 +475,21 @@ body {
 .collab-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1rem;
 }
-
+.collab-grid-below {
+    max-width: 570px;
+    display: grid;
+    padding: 1rem 1rem 0 1rem;
+    margin: 0 auto;
+}
+.collab-grid-club {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
 .collab-card {
     display: flex;
     align-items: center;
@@ -447,8 +507,18 @@ body {
     align-items: center;
     justify-content: space-evenly;
     background: var(--card-bg, #1a1a2e);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 12px;
+}
+
+.collab-card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.club-card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .collab-card h3 {
@@ -461,6 +531,11 @@ body {
     color: var(--text-secondary);
     font-size: 0.8rem;
     text-align: justify;
+}
+
+.collab-logo-club img {
+    max-width: 100px;
+    height: 100px;
 }
 
 .collab-logo img {
@@ -510,6 +585,8 @@ body {
 
 .banner-button:hover {
     cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* Footer */
