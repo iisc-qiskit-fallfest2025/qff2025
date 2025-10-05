@@ -23,6 +23,13 @@ body {
     font-feature-settings: "cv01", "cv05", "cv09", "cv11", "ss03";
     background: var(--color-bg);
     color: var(--color-text);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Improved responsive images */
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Header */
@@ -76,27 +83,32 @@ body {
 }
 
 /* Hero */
+/* Hero */
 .hero {
+    background: url("assets/Hero-section-bg.png") center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    min-height: 100vh;
-    background-image: url("./assets/Hero-section-bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    margin-top: -4px;
-    scroll-margin-top: 30px;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero h1 {
     font-family: var(--font-heading);
+    font-size: clamp(28px, 5vw, 48px); /* Responsive font size */
     font-weight: bold;
-    font-size: 57px;
-    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
     overflow-wrap: break-word;
     text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 2px;
 }
@@ -122,7 +134,7 @@ body {
 .hero-date {
     font-family: var(--font-heading);
     font-weight: bold;
-    font-size: 37px;
+    font-size: clamp(24px, 4vw, 37px); /* Responsive font size */
     letter-spacing: -0.03em;
     color: var(--color-accent-1);
 }
@@ -139,14 +151,14 @@ body {
 .countdown-announcement {
     color: var(--color-accent-1);
     font-weight: 525;
-    font-size: 33px;
+    font-size: clamp(24px, 4vw, 33px); /* Responsive font size */
     /* letter-spacing: -0.03em; */
     line-height: 1.2;
 }
 
 .countdown {
     font-family: var(--font-heading);
-    font-size: 38px;
+    font-size: clamp(28px, 5vw, 38px); /* Responsive font size */
     font-weight: 525;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
@@ -160,23 +172,21 @@ body {
 
 .extra-bold {
     font-weight: 700;
-    font-size: 30px;
+    font-size: clamp(20px, 3.5vw, 30px); /* Responsive font size */
     font-variation-settings: "opsz" 32, "wght" 700;
     letter-spacing: -0.03em;
-    width: 415px;
-    height: 60px;
-    line-height: 25px;
+    max-width: 415px;
+    line-height: 1.3;
     overflow-wrap: break-word;
 }
 
 .extra-bold-1 {
     font-weight: 700;
-    font-size: 26px;
+    font-size: clamp(18px, 3vw, 26px); /* Responsive font size */
     font-variation-settings: "opsz" 32, "wght" 700;
     letter-spacing: -0.03em;
-    width: 415px;
-    height: 55px;
-    line-height: 25px;
+    max-width: 415px;
+    line-height: 1.3;
     overflow-wrap: break-word;
 }
 
@@ -230,7 +240,7 @@ body {
 }
 
 .schedule h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem); /* Responsive font size */
     margin-bottom: 0.8rem;
     font-family: var(--font-heading);
     color: var(--color-text);
@@ -344,7 +354,7 @@ body {
 }
 
 .speakers h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem); /* Responsive font size */
     margin-bottom: 1.5rem;
     font-family: var(--font-heading);
     color: var(--color-text);
@@ -359,7 +369,7 @@ body {
 }
 
 .speakers-1 h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem); /* Responsive font size */
     margin-bottom: 1.5rem;
     font-family: var(--font-heading);
     color: var(--color-text);
@@ -559,7 +569,7 @@ body {
 
 
 .collaborations h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem); /* Responsive font size */
     margin-bottom: 2rem;
     color: var(--text-primary);
 }
@@ -652,17 +662,18 @@ body {
     display: flex;
     width: 100%;
     height: auto;
+    min-height: 300px;
     aspect-ratio: 12/7; /* match your image */
-    background: url("assets/CTA-bottom-section-bg.png") center/contain no-repeat;
+    background: url("assets/CTA-bottom-section-bg.png") center/cover no-repeat;
     align-items: center;
+    padding: 2rem;
 }
 
-
 .banner-content {
-    width: 50%;
+    width: min(50%, 600px);
     color: #0b1220;
-    font-size: 26px;
-    margin: 0 0 0 9.5rem;
+    font-size: clamp(18px, 3vw, 26px); /* Responsive font size */
+    margin: 0 0 0 clamp(2rem, 8vw, 9.5rem);
 }
 
 .banner-button {
@@ -731,21 +742,247 @@ body {
     color: #888;
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-    section {
-        margin-bottom: 3rem;
+/* Responsive Design */
+
+/* Mobile Phones (320px - 480px) */
+@media (max-width: 480px) {
+    .site-header {
+        padding: 0.5rem 1rem;
     }
+    
+    .site-header .logo {
+        font-size: 0.9rem;
+    }
+    
     .nav-links {
         position: absolute;
-        top: 75px;
+        top: 65px;
+        right: 0;
+        background: var(--nav-bg, #0b0b1a);
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 180px;
+        padding: 0.8rem;
+        display: none;
+        border-radius: 0 0 8px 8px;
+        font-size: 0.9rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 1.2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 2rem 1rem;
+        min-height: 60vh;
+    }
+    
+    .hero h1 {
+        font-size: 24px;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-date {
+        font-size: 20px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-button {
+        font-size: 16px;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* DateTime Section */
+    .datetime {
+        padding: 1.5rem 1rem;
+    }
+    
+    .countdown-announcement {
+        font-size: 22px;
+    }
+    
+    .countdown {
+        font-size: 24px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .extra-bold, .extra-bold-1 {
+        font-size: 16px;
+        line-height: 1.3;
+        height: auto;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* About Section */
+    .about {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .about img {
+        display: none;
+    }
+
+    /* Schedule Section */
+    .schedule {
+        padding: 2rem 1rem;
+    }
+    
+    .schedule h2 {
+        font-size: 1.8rem;
+    }
+    
+    .timeline::after {
+        left: 15px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 2.5rem;
+        text-align: left;
+    }
+    
+    .timeline-item::before {
+        left: 8px;
+        width: 14px;
+        height: 14px;
+    }
+    
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+        text-align: left;
+    }
+    
+    .timeline-item.right::before {
+        left: 8px;
+    }
+    
+    .timeline-item::after,
+    .timeline-item.left::after,
+    .timeline-item.right::after {
+        display: none;
+    }
+
+    /* Speakers Section */
+    .speakers, .speakers-1 {
+        padding: 2rem 1rem;
+    }
+    
+    .speakers h2, .speakers-1 h2 {
+        font-size: 1.8rem;
+    }
+    
+    .speakers-grid,
+    .speakers-grid-1,
+    .speakers-grid-sanjit {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+    }
+    
+    .speaker-card,
+    .speaker-card-1,
+    .speaker-card-2 {
+        padding: 1rem 0.5rem;
+    }
+    
+    .speaker-card img,
+    .speaker-card-1 img,
+    .speaker-card-2 img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .speaker-card h3,
+    .speaker-card-1 h4,
+    .speaker-card-2 h4 {
+        font-size: 0.9rem;
+    }
+
+    /* Collaborations */
+    .collaborations {
+        padding: 2rem 1rem;
+    }
+    
+    .collaborations h2 {
+        font-size: 1.8rem;
+    }
+    
+    .collab-grid,
+    .collab-grid-club {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .collab-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .collab-logo img,
+    .collab-logo-club img {
+        max-width: 80px;
+        height: 80px;
+    }
+
+    /* Banner */
+    .banner {
+        background-size: cover;
+        padding: 2rem 1rem;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .banner-content {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        font-size: 18px;
+    }
+    
+    .banner-button {
+        font-size: 16px;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 20px 1rem;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+/* Mobile Landscape and Small Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .site-header {
+        padding: 0.5rem 1.5rem;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 70px;
         right: 0;
         background: var(--nav-bg, #0b0b1a);
         flex-direction: column;
         gap: 1rem;
         width: 200px;
         padding: 1rem;
-        display: none; /* hidden by default */
+        display: none;
         border-radius: 0 0 8px 8px;
     }
 
@@ -756,66 +993,216 @@ body {
     .hamburger {
         display: block;
     }
+
+    /* Hero Section */
+    .hero {
+        padding: 3rem 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .hero-date {
+        font-size: 24px;
+    }
+    
+    .hero-button {
+        font-size: 18px;
+        padding: 0.5rem 0.75rem;
+    }
+
+    /* DateTime */
+    .countdown-announcement {
+        font-size: 28px;
+    }
+    
+    .countdown {
+        font-size: 32px;
+    }
+    
+    .extra-bold, .extra-bold-1 {
+        font-size: 18px;
+        line-height: 1.2;
+        height: auto;
+        width: 100%;
+    }
+
+    /* About */
+    .about {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .about img {
+        max-width: 300px;
+        width: 100%;
+    }
+
+    /* Schedule */
+    .schedule h2 {
+        font-size: 2rem;
+    }
+    
     .timeline::after {
         left: 20px;
     }
+    
     .timeline-item {
         width: 100%;
         padding-left: 3rem;
         text-align: left;
     }
+    
     .timeline-item::before {
-        left: 5px;
+        left: 13px;
     }
+    
     .timeline-item.left,
     .timeline-item.right {
-        left: 5px;
+        left: 0;
         text-align: left;
     }
+    
     .timeline-item.right::before {
-        left: 5px;
+        left: 13px;
     }
-    .hero h1 {
-        font-size: 32px;
-    }
-    .hero-date {
-        font-size: 24px;
-    }
-    .hero-button {
-        font-size: 18px;
-        padding: 0.5rem 0.75rem;
-    }
-    .countdown-announcement {
-        font-size: 28px;
-    }
-    .countdown {
-        font-size: 32px;
-    }
-    .extra-bold {
-        font-size: 18px;
-        line-height: 1;
-        height: auto;
-    }
-    .about img {
+    
+    .timeline-item::after,
+    .timeline-item.left::after,
+    .timeline-item.right::after {
         display: none;
     }
+
+    /* Speakers */
+    .speakers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .speakers-grid-1 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .speakers-grid-sanjit {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /* Collaborations */
     .collab-grid {
         grid-template-columns: 1fr;
     }
+    
+    .collab-grid-club {
+        grid-template-columns: 1fr 1fr;
+    }
+    
     .collab-card {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        text-align: left;
     }
-    .collab-logo {
-        margin-top: 1rem;
-    }
+
+    /* Banner */
     .banner {
         padding: 2rem;
     }
-    .banner img {
-        display: none;
-    }
+    
     .banner-content {
-        width: 100%;
+        width: 70%;
+        font-size: 22px;
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Tablets (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .site-header {
+        padding: 0.5rem 2rem;
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero-date {
+        font-size: 28px;
+    }
+
+    /* About */
+    .about {
+        max-width: 900px;
+        gap: 1.5rem;
+    }
+    
+    .about img {
+        max-width: 300px;
+    }
+
+    /* Speakers */
+    .speakers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .speakers-grid-1 {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    /* Collaborations */
+    .collab-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Banner */
+    .banner-content {
+        font-size: 24px;
+    }
+}
+
+/* Large Tablets and Small Desktops (1025px - 1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .about {
+        max-width: 950px;
+    }
+    
+    .speakers-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .banner-content {
+        font-size: 24px;
+    }
+}
+
+/* Very Large Screens (1201px+) */
+@media (min-width: 1201px) {
+    .hero {
+        padding: 8rem 2rem 6rem;
+    }
+    
+    .about {
+        max-width: 1200px;
+    }
+    
+    .speakers, .speakers-1 {
+        max-width: 1200px;
+    }
+    
+    .collaborations {
+        max-width: 1200px;
+    }
+    
+    /* Prevent content from being too wide on very large screens */
+    .hero-content {
+        max-width: 900px;
     }
 }
