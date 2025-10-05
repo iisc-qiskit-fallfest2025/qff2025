@@ -350,13 +350,41 @@ body {
     color: var(--color-text);
 }
 
+.speakers-1 {
+    max-width: 1030px;
+    padding: 3.4rem 2rem 2rem 2rem;
+    text-align: center;
+    margin: 0 auto;
+    scroll-margin-top: 30px;
+}
+
+.speakers-1 h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-heading);
+    color: var(--color-text);
+}
+
 .speakers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns:  minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr);
     gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
     padding-bottom: 1rem;
+}
+
+.speakers-grid-sanjit {
+    display: grid;
+    grid-template-columns:  minmax(200px, 1.5fr) minmax(200px, 1fr) minmax(200px, 1.5fr);
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+}
+
+#sanjit {
+    grid-column: 2;
 }
 
 .speaker-card {
@@ -368,6 +396,7 @@ body {
 .speaker-card:hover{
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 .speaker-card img {
@@ -377,6 +406,69 @@ body {
     margin-bottom: 0.3rem;
     object-fit: cover;
 }
+
+.speakers-grid-1 {
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) minmax(150px, 1fr) minmax(150px, 1fr) minmax(150px, 1fr);
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+.speaker-card-1 {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+    text-align: center;
+}
+.speaker-card-1:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.speaker-card-1 img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 0.3rem;
+    object-fit: cover;
+}
+
+.speaker-card-1 h4 {
+    margin: 0.2rem 0;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.speaker-card-2 {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+    text-align: center;
+}
+.speaker-card-2:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.speaker-card-2 img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 0.4rem;
+    object-fit: cover;
+}
+
+.speaker-card-2 h4 {
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
 
 .speaker-card h3 {
     margin: 0.2rem 0;
@@ -514,11 +606,13 @@ body {
 .collab-card:hover{
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 .club-card:hover{
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 .collab-card h3 {
