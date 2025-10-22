@@ -377,7 +377,7 @@ img {
 
 .speakers-grid {
     display: grid;
-    grid-template-columns:  minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr);
+    grid-template-columns:  minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr)   minmax(200px, 1fr) minmax(200px, 1fr);
     gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -386,7 +386,7 @@ img {
 
 .speakers-grid-sanjit {
     display: grid;
-    grid-template-columns:  minmax(200px, 1.5fr) minmax(200px, 1fr) minmax(200px, 1.5fr);
+    grid-template-columns:  minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr);
     gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
