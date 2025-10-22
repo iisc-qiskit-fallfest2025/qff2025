@@ -137,6 +137,7 @@ img {
     font-size: clamp(24px, 4vw, 37px); /* Responsive font size */
     letter-spacing: -0.03em;
     color: var(--color-accent-1);
+    padding-bottom: 1rem;
 }
 
 .datetime {
@@ -386,7 +387,7 @@ img {
 
 .speakers-grid-sanjit {
     display: grid;
-    grid-template-columns:  minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr);
+    grid-template-columns:  minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr);
     gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
