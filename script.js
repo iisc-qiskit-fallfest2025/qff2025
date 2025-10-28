@@ -2,11 +2,18 @@
 const targetDate = new Date("October 28, 2025 00:00:00").getTime();
 
 function updateCountdown() {
+  const countdownElement = document.getElementById("countdown");
+  
+  // Check if countdown elements exist (they only exist on index.html)
+  if (!countdownElement) {
+    return;
+  }
+  
   const now = new Date().getTime();
   const diff = targetDate - now;
 
   if (diff <= 0) {
-    document.getElementById("countdown").innerText = "The Fest Has Started!";
+    countdownElement.innerText = "The Fest Has Started!";
     return;
   }
 
@@ -15,10 +22,15 @@ function updateCountdown() {
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = hours;
-  document.getElementById("minutes").innerText = minutes;
-  document.getElementById("seconds").innerText = seconds;
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
+  
+  if (daysEl) daysEl.innerText = days;
+  if (hoursEl) hoursEl.innerText = hours;
+  if (minutesEl) minutesEl.innerText = minutes;
+  if (secondsEl) secondsEl.innerText = seconds;
 }
 
 setInterval(updateCountdown, 1000);
