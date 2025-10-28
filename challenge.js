@@ -107,13 +107,12 @@ function loadLeaderboard() {
                     });
                 }
                 
-                // Helper function to format trail cell with score and time
+                // Helper function to format trail cell with score only (no time)
                 const formatTrailCell = (score, maxScore, time) => {
                     if (score > 0) {
                         const perfectClass = score === maxScore ? 'perfect-score' : '';
                         return `<div class="trail-info ${perfectClass}">
                                     <div class="trail-score">${score.toFixed(1)}/${maxScore}</div>
-                                    <div class="trail-time">${time}</div>
                                 </div>`;
                     }
                     return '<span class="challenge-unsolved">—</span>';
