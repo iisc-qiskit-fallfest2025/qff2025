@@ -181,6 +181,79 @@ img {
     overflow-wrap: break-word;
 }
 
+/* Day-1 Quick Links Section */
+.day-links-section {
+    padding: 2rem 2rem;
+    background: transparent;
+}
+
+.day-links-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(26, 35, 50, 0.95), rgba(15, 23, 42, 0.95));
+    border: 2px solid rgba(168, 85, 247, 0.4);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 
+                0 0 0 1px rgba(168, 85, 247, 0.1) inset,
+                0 4px 20px rgba(168, 85, 247, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.day-links-section .container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 
+                0 0 0 1px rgba(168, 85, 247, 0.2) inset,
+                0 8px 30px rgba(168, 85, 247, 0.3);
+    border-color: rgba(168, 85, 247, 0.6);
+}
+
+.day-links-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.day-links-header h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.day-links-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.day-link-btn {
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.5);
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.day-link-btn:hover {
+    background: rgba(168, 85, 247, 0.25);
+    border-color: rgba(168, 85, 247, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(168, 85, 247, 0.4);
+    color: #f0e7ff;
+}
+
 .extra-bold-1 {
     font-weight: 700;
     font-size: clamp(18px, 3vw, 26px); /* Responsive font size */
@@ -242,7 +315,7 @@ img {
 
 .schedule h2 {
     font-size: clamp(2rem, 4vw, 2.5rem); /* Responsive font size */
-    margin-bottom: 0.8rem;
+    margin-bottom: 2rem;
     font-family: var(--font-heading);
     color: var(--color-text);
 }
@@ -250,6 +323,43 @@ img {
 .schedule h3{
     margin-bottom: 2rem;
     color: var(--color-muted);
+}
+
+/* PDF Schedule Container */
+.schedule-pdf-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.schedule-pdf-container iframe {
+    width: 100%;
+    min-height: 550px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    background: #fff;
+}
+
+.pdf-fallback {
+    margin-top: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.pdf-fallback p {
+    color: var(--color-text-toned-down);
+    font-size: 0.95rem;
+}
+
+.pdf-fallback a {
+    color: var(--color-accent-1);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.pdf-fallback a:hover {
+    color: var(--color-accent-2);
 }
 
 .timeline {
@@ -383,19 +493,6 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding-bottom: 1rem;
-}
-
-.speakers-grid-sanjit {
-    display: grid;
-    grid-template-columns:  minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr) minmax(200px, 1fr);
-    gap: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 1rem;
-}
-
-#sanjit {
-    grid-column: 2;
 }
 
 .speaker-card {
@@ -550,7 +647,97 @@ img {
     transition: background 0.2s ease;
 }
 
+/* Events Showcase Section */
+.events-showcase {
+    padding: 4rem 2rem;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    scroll-margin-top: 20px;
+}
 
+.events-showcase h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.event-card {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(168, 85, 247, 0.3);
+    border-color: rgba(168, 85, 247, 0.6);
+}
+
+.event-poster {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.event-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-poster img {
+    transform: scale(1.05);
+}
+
+.event-info {
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.event-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #a855f7;
+}
+
+.event-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+}
+
+.event-cta {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ec4899;
+    transition: all 0.3s ease;
+}
+
+.event-card:hover .event-cta {
+    color: #f9a8d4;
+    transform: translateX(5px);
+}
 
 .collaborations {
     padding: 3rem 2rem 2rem;
@@ -747,6 +934,35 @@ img {
 
 /* Mobile Phones (320px - 480px) */
 @media (max-width: 480px) {
+    .day-links-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .day-links-section .container {
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+    }
+
+    .day-links-header {
+        margin-bottom: 1.25rem;
+    }
+
+    .day-links-header h3 {
+        font-size: 1.15rem;
+    }
+
+    .day-links-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .day-link-btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+    }
+
     .site-header {
         padding: 0.5rem 1rem;
     }
@@ -842,6 +1058,14 @@ img {
         font-size: 1.8rem;
     }
     
+    .schedule-pdf-container {
+        padding: 0.5rem;
+    }
+    
+    .schedule-pdf-container iframe {
+        min-height: 450px;
+    }
+    
     .timeline::after {
         left: 15px;
     }
@@ -884,8 +1108,7 @@ img {
     }
     
     .speakers-grid,
-    .speakers-grid-1,
-    .speakers-grid-sanjit {
+    .speakers-grid-1 {
         grid-template-columns: 1fr 1fr;
         gap: 0.8rem;
     }
@@ -1086,10 +1309,6 @@ img {
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
     }
-    
-    .speakers-grid-sanjit {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
 
     /* Collaborations */
     .collab-grid {
@@ -1205,5 +1424,1079 @@ img {
     /* Prevent content from being too wide on very large screens */
     .hero-content {
         max-width: 900px;
+    }
+}
+
+/* Discord Community Banner */
+.discord-banner {
+    background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+    padding: 1.5rem 2rem;
+    border-bottom: 3px solid #4752c4;
+}
+
+.discord-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.discord-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.discord-text {
+    flex: 1;
+    min-width: 250px;
+}
+
+.discord-text h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #fff;
+}
+
+.discord-text p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+.discord-button {
+    background: #fff;
+    color: #5865f2;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.discord-button:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Event Info Section */
+.event-info-section {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, var(--color-bg) 0%, #1a2332 100%);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.3);
+    border-color: rgba(168, 85, 247, 0.6);
+}
+
+.info-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #a855f7;
+}
+
+.info-card p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.info-link {
+    display: inline-block;
+    color: #ec4899;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.info-link:hover {
+    color: #f9a8d4;
+    transform: translateX(5px);
+}
+
+/* Challenge Page Styles */
+.challenge-hero {
+    background: linear-gradient(135deg, var(--color-bg) 0%, #1a2332 100%);
+    color: #fff;
+    text-align: center;
+    padding: 4rem 2rem 3rem;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.challenge-hero .hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-accent-1);
+}
+
+.challenge-hero .hero-content p {
+    font-size: 1.2rem;
+    color: var(--color-text-toned-down);
+    max-width: 600px;
+}
+
+/* Challenge Countdown Section */
+.challenge-countdown {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #1a2332 0%, var(--color-bg) 100%);
+    text-align: center;
+}
+
+.challenge-countdown h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-accent-1);
+    margin-bottom: 2rem;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.time-unit {
+    background: rgba(255, 210, 63, 0.1);
+    border: 2px solid var(--color-accent-1);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-value {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-accent-1);
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 0.9rem;
+    color: var(--color-text-toned-down);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.countdown-message {
+    font-size: 1.1rem;
+    color: var(--color-text-toned-down);
+    margin-top: 1rem;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Leaderboard Section */
+.leaderboard-section {
+    padding: 4rem 0;
+    background: var(--color-bg);
+}
+
+.leaderboard-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--color-accent-1);
+}
+
+/* Problem Statements Banner */
+.problem-statements-banner {
+    background: linear-gradient(135deg, rgba(255, 210, 63, 0.1) 0%, rgba(255, 61, 129, 0.1) 100%);
+    border: 2px solid var(--color-accent-1);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.problem-statements-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 210, 63, 0.3);
+}
+
+.banner-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.banner-content {
+    flex: 1;
+}
+
+.banner-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-accent-1);
+    margin-bottom: 0.5rem;
+}
+
+.banner-content p {
+    color: var(--color-text-toned-down);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.colab-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    color: #000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.colab-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: var(--color-accent-1);
+    color: var(--color-bg);
+}
+
+.contest-info {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contest-info p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.contest-title {
+    color: var(--color-accent-1);
+    font-weight: 600;
+}
+
+.contest-note {
+    background: #1a2332;
+    border: 1px solid #2a3441;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 800px;
+    font-size: 0.9rem;
+    color: var(--color-text-toned-down);
+}
+
+.contest-note strong {
+    color: var(--color-accent-1);
+}
+
+.leaderboard-container {
+    background: #151b2f;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.loading {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.1rem;
+    color: var(--color-muted);
+}
+
+.contest-leaderboard {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.leaderboard-header {
+    background: #1a2332;
+    color: var(--color-text);
+}
+
+.leaderboard-header th {
+    padding: 1rem 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    border-right: 1px solid #2a3441;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    background: #1a2332;
+    z-index: 1;
+}
+
+.leaderboard-header th:last-child {
+    border-right: none;
+}
+
+.rank-col {
+    width: 60px;
+    min-width: 60px;
+}
+
+.name-col {
+    width: 200px;
+    min-width: 150px;
+    text-align: left !important;
+}
+
+.score-col {
+    width: 80px;
+    min-width: 80px;
+}
+
+.time-col {
+    width: 100px;
+    min-width: 100px;
+}
+
+.challenge-col {
+    width: 80px;
+    min-width: 80px;
+}
+
+.leaderboard-table tbody tr {
+    border-bottom: 1px solid #2a3441;
+    transition: background-color 0.2s ease;
+}
+
+.leaderboard-table tbody tr:hover {
+    background: #1a2332;
+}
+
+.leaderboard-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border-right: 1px solid #2a3441;
+    vertical-align: middle;
+}
+
+.leaderboard-table td:last-child {
+    border-right: none;
+}
+
+.rank-cell {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.rank-cell.gold {
+    color: #ffd700;
+}
+
+.rank-cell.silver {
+    color: #c0c0c0;
+}
+
+.rank-cell.bronze {
+    color: #cd7f32;
+}
+
+.name-cell {
+    text-align: left !important;
+    font-weight: 500;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.score-cell {
+    font-weight: 600;
+    color: var(--color-accent-2);
+}
+
+.time-cell {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+}
+
+.challenge-cell {
+    font-size: 0.85rem;
+    position: relative;
+}
+
+.trail-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+.trail-score {
+    background: #2d5a3d;
+    color: #4ade80;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.trail-time {
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    font-weight: 400;
+}
+
+.perfect-score .trail-score {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #0a0f1c;
+    font-weight: 600;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+.challenge-solved {
+    background: #2d5a3d;
+    color: #4ade80;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-weight: 500;
+}
+
+.perfect-score .challenge-solved {
+    background: #2d5a3d;
+    color: #4ade80;
+    font-weight: 600;
+}
+
+.challenge-unsolved {
+    color: var(--color-muted);
+    opacity: 0.6;
+}
+
+.challenge-time {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.1rem;
+}
+
+/* Top rankings special styling */
+.leaderboard-table tbody tr:nth-child(1) {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.08) 0%, transparent 100%);
+}
+
+.leaderboard-table tbody tr:nth-child(2) {
+    background: linear-gradient(90deg, rgba(192, 192, 192, 0.08) 0%, transparent 100%);
+}
+
+.leaderboard-table tbody tr:nth-child(3) {
+    background: linear-gradient(90deg, rgba(205, 127, 50, 0.08) 0%, transparent 100%);
+}
+
+.rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.rank-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.participant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.participant .name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.participant .email {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+.participant .last-submission {
+    font-size: 0.8rem;
+    color: var(--color-accent-1);
+    font-weight: 500;
+    margin-top: 0.2rem;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-accent-2);
+}
+
+.challenges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.no-data {
+    text-align: center;
+    padding: 3rem;
+    color: var(--color-muted);
+    font-style: italic;
+    grid-column: 1 / -1;
+}
+
+/* Challenge Submission Section */
+.challenge-submission {
+    padding: 4rem 0;
+    background: #0d1117;
+}
+
+.challenge-submission h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--color-accent-1);
+}
+
+.challenge-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #151b2f;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.form-group select,
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #2a3441;
+    border-radius: 8px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input[type="email"]:focus {
+    outline: none;
+    border-color: var(--color-accent-1);
+    box-shadow: 0 0 0 3px rgba(255, 210, 63, 0.1);
+}
+
+.file-upload-container {
+    position: relative;
+}
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px dashed #2a3441;
+    border-radius: 8px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: var(--color-accent-1);
+    background: #1a2332;
+}
+
+.file-upload-info {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+.file-size-limit {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+}
+
+.file-selected-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #1a2332;
+    border-radius: 6px;
+    border-left: 4px solid var(--color-accent-1);
+}
+
+.file-selected-info p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+}
+
+/* Contest Leaderboard Responsive Design */
+@media (max-width: 1200px) {
+    .leaderboard-table {
+        font-size: 0.8rem;
+    }
+    
+    .challenge-col {
+        width: 60px;
+        min-width: 60px;
+    }
+    
+    .leaderboard-header th {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .leaderboard-table td {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 968px) {
+    .contest-leaderboard {
+        overflow-x: scroll;
+    }
+    
+    .leaderboard-table {
+        min-width: 800px;
+    }
+    
+    .name-col {
+        width: 150px;
+        min-width: 120px;
+    }
+    
+    .challenge-col {
+        width: 50px;
+        min-width: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .day-links-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .day-links-section .container {
+        padding: 1.75rem 1.25rem;
+        border-radius: 14px;
+    }
+
+    .day-links-header {
+        margin-bottom: 1.35rem;
+    }
+
+    .day-links-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .day-links-buttons {
+        gap: 0.85rem;
+    }
+
+    .day-link-btn {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .discord-banner {
+        padding: 1.25rem 1rem;
+    }
+
+    .discord-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .discord-text h3 {
+        font-size: 1.25rem;
+    }
+
+    .discord-text p {
+        font-size: 0.9rem;
+    }
+
+    .discord-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .event-info-section {
+        padding: 2rem 1rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .info-card {
+        padding: 1.5rem;
+    }
+
+    .info-icon {
+        font-size: 2.5rem;
+    }
+
+    .info-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .info-card p {
+        font-size: 0.9rem;
+    }
+
+    .events-showcase {
+        padding: 3rem 1.5rem;
+    }
+
+    .events-showcase h2 {
+        font-size: 2rem;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .event-poster {
+        height: 350px;
+    }
+
+    .event-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .leaderboard-section {
+        padding: 2rem 0;
+    }
+    
+    .leaderboard-section h2 {
+        font-size: 2rem;
+    }
+    
+    .contest-note {
+        font-size: 0.8rem;
+        padding: 0.75rem;
+    }
+    
+    .leaderboard-table {
+        font-size: 0.75rem;
+        min-width: 700px;
+    }
+    
+    .rank-col {
+        width: 40px;
+        min-width: 40px;
+    }
+    
+    .name-col {
+        width: 120px;
+        min-width: 100px;
+    }
+    
+    .score-col,
+    .time-col {
+        width: 60px;
+        min-width: 60px;
+    }
+    
+    .challenge-col {
+        width: 40px;
+        min-width: 40px;
+    }
+    
+    .leaderboard-header th {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .leaderboard-table td {
+        padding: 0.5rem 0.25rem;
+    }
+}
+
+.file-selected-info .valid {
+    color: #4ade80;
+}
+
+.file-selected-info .invalid {
+    color: var(--color-accent-2);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    background: linear-gradient(135deg, var(--color-accent-1) 0%, #ffb700 100%);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 210, 63, 0.3);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Submission Result */
+.submission-result {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.submission-result.success {
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid #4ade80;
+    color: #4ade80;
+}
+
+.submission-result.error {
+    background: rgba(255, 61, 129, 0.1);
+    border: 1px solid var(--color-accent-2);
+    color: var(--color-accent-2);
+}
+
+.result-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.result-message {
+    flex: 1;
+    line-height: 1.5;
+}
+
+/* Active nav link */
+.nav-links a.active {
+    color: var(--color-accent-1);
+    font-weight: 600;
+}
+
+/* Footer */
+.site-footer {
+    background: #151b2f;
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--color-muted);
+    border-top: 1px solid #2a3441;
+}
+
+/* Responsive Design for Challenge Page */
+@media (max-width: 768px) {
+    .challenge-hero .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .challenge-hero .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .challenge-countdown h2 {
+        font-size: 2rem;
+    }
+    
+    .countdown-timer {
+        gap: 1rem;
+    }
+    
+    .time-unit {
+        padding: 1rem 1.5rem;
+        min-width: 90px;
+    }
+    
+    .time-value {
+        font-size: 2.5rem;
+    }
+    
+    .time-label {
+        font-size: 0.8rem;
+    }
+    
+    .problem-statements-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .banner-icon {
+        font-size: 2.5rem;
+    }
+    
+    .banner-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .banner-content p {
+        font-size: 0.9rem;
+    }
+    
+    .leaderboard-header,
+    .leaderboard-row {
+        grid-template-columns: 60px 1fr 80px 100px;
+        gap: 0.5rem;
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .participant .email {
+        display: none;
+    }
+    
+    .participant .last-submission {
+        font-size: 0.75rem;
+        margin-top: 0.1rem;
+    }
+    
+    .challenge-form {
+        margin: 0 1rem;
+        padding: 1.5rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-timer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .time-unit {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    
+    .countdown-message {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .problem-statements-banner {
+        padding: 1rem;
+    }
+    
+    .banner-icon {
+        font-size: 2rem;
+    }
+    
+    .banner-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .colab-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .leaderboard-header,
+    .leaderboard-row {
+        grid-template-columns: 50px 1fr 70px;
+        gap: 0.5rem;
+    }
+    
+    .challenges {
+        display: none;
+    }
+    
+    .rank-icon {
+        font-size: 1.2rem;
+        margin-right: 0.2rem;
     }
 }

@@ -1,0 +1,48 @@
+runtime: python311
+
+automatic_scaling:
+  max_instances: 10
+
+handlers:
+# Serve static files
+- url: /assets
+  static_dir: assets
+
+- url: /challenge.js
+  static_files: challenge.js
+  upload: challenge.js
+  expiration: "0s"
+
+- url: /script.js
+  static_files: script.js
+  upload: script.js
+  expiration: "0s"
+
+- url: /styles.css
+  static_files: styles.css
+  upload: styles.css
+  expiration: "0s"
+
+# Serve HTML files
+- url: /challenge
+  static_files: challenge.html
+  upload: challenge.html
+  expiration: "0s"
+
+- url: /challenge.html
+  static_files: challenge.html
+  upload: challenge.html
+  expiration: "0s"
+
+# Serve the main page
+- url: /
+  static_files: index.html
+  upload: index.html
+
+# Catch all other requests and serve index.html (for SPA routing)
+- url: /.*
+  static_files: index.html
+  upload: index.html
+
+# Security headers
+default_expiration: "0s"  # No caching during development

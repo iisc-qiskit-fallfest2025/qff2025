@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Eigen Trails - IISc QFF 2025</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script defer src="script.js"></script>
+        <script defer src="challenge.js"></script>
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="site-header">
+            <div class="logo">
+                <img src="assets/Top-qiskit-logo.png" alt="Qiskit" width="35" />
+                <nav class="nav-main"><a href="index.html"><span class="logo-text">IISc Qiskit Fall Fest 2025</span></a></nav>
+            </div>
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html#details">Details</a>
+                <a href="https://docs.google.com/document/d/e/2PACX-1vSsS--oK1_wnLFpL49v24OksM9GULGYK4f6avmO34VwYYhD9nViaS3q5kd1zZ3T9VE0WVZnB69ML7Js/pub" target="_blank">Hackathon</a>
+                <a href="index.html#schedule">Schedule</a>
+                <a href="index.html#speakers">Speakers</a>
+                <a href="index.html#collaborations">Collaborations</a>
+                <a href="index.html#organizing">Organizing Team</a>
+                <a href="index.html#links">Socials</a>
+                <a href="challenge.html" class="active">Eigen Trails</a>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                &#9776;
+            </div>
+        </header>
+
+        <!-- Eigen Trails Hero -->
+        <section class="challenge-hero">
+            <div class="hero-content">
+                <h1>Eigen Trails</h1>
+                <p>Embark on quantum trails and compete with fellow participants!</p>
+            </div>
+        </section>
+
+        <!-- Countdown Section (shown before contest starts) -->
+        <section class="challenge-countdown" id="challenge-countdown" style="display: none;">
+            <div class="container">
+                <h2>Eigen Trails Begins In</h2>
+                <div class="countdown-timer" id="challenge-timer">
+                    <div class="time-unit">
+                        <span class="time-value" id="hours-left">00</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="minutes-left">00</span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="seconds-left">00</span>
+                        <span class="time-label">Seconds</span>
+                    </div>
+                </div>
+                <p class="countdown-message">Challenges will be available at 6:00 PM today!</p>
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section class="leaderboard-section" id="leaderboard-section">
+            <div class="container">
+                <!-- Problem Statements Link -->
+                <div class="problem-statements-banner">
+                    <div class="banner-icon">📚</div>
+                    <div class="banner-content">
+                        <h3>Day-1 Problem Statements</h3>
+                        <p>Find all the problem statements for Eigen Trails Day-1 in the Colab notebook</p>
+                        <a href="https://colab.research.google.com/drive/15DrS8om18hC9cPVDUsH5nbt0qHrU9exn?authuser=2#scrollTo=VaB9AmeRdFIa" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="colab-button">
+                            <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" style="height: 20px; vertical-align: middle;">
+                            Open in Google Colab
+                        </a>
+                    </div>
+                </div>
+
+                <h2>Leaderboard</h2>
+                <div class="contest-info">
+                    <p>Ranking of <span class="contest-title">IISc Qiskit Fall Fest 2025 - Eigen Trails</span></p>
+                    <div class="contest-note">
+                        <strong>Note:</strong> While Eigen Trails is in progress, rankings may not be updated in real time and could include outdated information.
+                    </div>
+                </div>
+                <div class="leaderboard-container">
+                    <div class="loading" id="leaderboard-loading">Loading leaderboard...</div>
+                    <div class="contest-leaderboard" id="leaderboard-table" style="display: none;">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <tr class="leaderboard-header">
+                                    <th class="rank-col">Rank</th>
+                                    <th class="name-col">Name</th>
+                                    <th class="challenge-col">Ring the Bell</th>
+                                    <th class="challenge-col">Entanglement Heist</th>
+                                    <th class="challenge-col">Be a Dicke</th>
+                                    <th class="score-col">Total Score</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-body">
+                                <!-- Leaderboard entries will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trail Submission Section -->
+        <section class="challenge-submission" id="challenge-submission">
+            <div class="container">
+                <h2>Submit Trail Solution</h2>
+                <form class="challenge-form" id="challenge-form">
+                    <div class="form-group">
+                        <label for="challenge-select">Select Trail:</label>
+                        <select id="challenge-select" name="challenge" required>
+                            <option value="">-- Select a Trail --</option>
+                            <option value="ring-the-bell">Ring the Bell (5 pts - 2 qubits Bell state)</option>
+                            <option value="entanglement-heist">Entanglement Heist (10 pts - Quantum teleportation)</option>
+                            <option value="be-a-dicke">Be a Dicke (20 pts - Dicke(5,2) state)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qpy-file">Upload .qpy File:</label>
+                        <div class="file-upload-container">
+                            <input type="file" id="qpy-file" name="qpy-file" accept=".qpy" required />
+                            <div class="file-upload-info">
+                                <p>Please upload your quantum circuit as a .qpy file</p>
+                                <p class="file-size-limit">Maximum file size: 10MB</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            <span class="btn-text">Submit Solution</span>
+                            <span class="btn-loading" style="display: none;">Submitting...</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="submission-result" id="submission-result" style="display: none;">
+                    <!-- Submission result will be displayed here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; 2025 IISc Qiskit Fall Fest. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>

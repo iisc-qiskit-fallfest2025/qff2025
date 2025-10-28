@@ -22,11 +22,43 @@
                 <a href="#collaborations">Collaborations</a>
                 <a href="#organizing">Organizing Team</a>
                 <a href="#links">Socials</a>
+                <a href="challenge.html">Eigen Trails</a>
             </nav>
             <div class="hamburger" id="hamburger">
                 &#9776;
             </div>
         </header>
+
+        <!-- Discord Community Banner -->
+        <section class="discord-banner">
+            <div class="container">
+                <div class="discord-content">
+                    <div class="discord-icon">💬</div>
+                    <div class="discord-text">
+                        <h3>Join our Discord Community</h3>
+                        <p>Connect with fellow participants, get help, and stay updated!</p>
+                    </div>
+                    <a href="https://discord.gg/uRCexrur" target="_blank" class="discord-button">Join Discord</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Day-1 Quick Links -->
+        <section class="day-links-section">
+            <div class="container">
+                <div class="day-links-header">
+                    <h3>📅 Day-1 Resources</h3>
+                </div>
+                <div class="day-links-buttons">
+                    <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzFlNDYwNzktYTU3Ni00NDRlLTlhYTctYzBmYTFkOTJhMWJj%40thread.v2/0?context=%7b%22Tid%22%3a%226f15cd97-f6a7-41e3-b2c5-ad4193976476%22%2c%22Oid%22%3a%22ac50054b-f0ef-4006-a7b4-1735278cd969%22%7d" target="_blank" class="day-link-btn">
+                        🔗 Town Hall Meeting
+                    </a>
+                    <a href="challenge.html" class="day-link-btn">
+                        🎯 Eigen Trails Challenges
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <!-- Hero -->
         <section class="hero" id="hero">
@@ -85,72 +117,16 @@
         <!-- Schedule -->
         <section id="schedule" class="schedule">
             <h2>Schedule</h2>
-            <h3>Detailed schedule to be announced soon.</h3>
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-date">October 28</div>
-                    <div class="timeline-content">
-                        <p>
-                            Kickoff
-                        </p>
-                        <p>
-                            Quantum Computing Intro
-                        </p>
-                        <p>
-                            Qiskit 101 - Hands-on
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item right">
-                    <div class="timeline-date">October 29 to October 30</div>
-                    <div class="timeline-content">
-                        <p>
-                            Online Talks
-                        </p>
-                        <p>
-                            Hands-on Sessions
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item left">
-                    <div class="timeline-date">October 31</div>
-                    <div class="timeline-content">
-                        <p>
-                            In-person Talks
-                        </p>
-                        <p>
-                            Hands-on Sessions
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item right">
-                    <div class="timeline-date">November 1</div>
-                    <div class="timeline-content">
-                        <p>
-                            In-person Talks
-                        </p>
-                        <p>
-                            Hands-on Sessions
-                        </p>
-                        <p>
-                            Hackathon Begins!
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item left">
-                    <div class="timeline-date">November 2</div>
-                    <div class="timeline-content">
-                        <p>
-                            Hackathon Ends!
-                        </p>
-                        <p>
-                            Closing Ceremony
-                        </p>
-                    </div>
+            <div class="schedule-pdf-container">
+                <iframe 
+                    src="QFFIISc2025 Schedule.pdf" 
+                    type="application/pdf" 
+                    width="100%" 
+                    height="800px"
+                    style="border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                </iframe>
+                <div class="pdf-fallback">
+                    <p>Unable to display PDF? <a href="QFFIISc2025 Schedule.pdf" download style="color: var(--color-accent-1); text-decoration: underline;">Download the schedule here</a></p>
                 </div>
             </div>
         </section>
@@ -159,79 +135,111 @@
         <section id="speakers" class="speakers">
             <h2>Speakers</h2>
             <div class="speakers-grid">
-                <div class="speaker-card" onclick="window.open('https://www.linkedin.com/in/lvsubramaniam/?originalSubdomain=in', '_blank')">
-                    <img src="assets/venkat.jpeg" alt="Venkat" />
-                    <h3>L Venkata Subramaniam</h3>
-                    <p>Head<br>IBM Quantum India</p>
+                <div class="speaker-card" onclick="window.open('https://eecs.iisc.ac.in/people/chiranjib-bhattacharyya/', '_blank')">
+                    <img src="assets/chiru.jpg" alt="Chiranjib Bhattacharyya" />
+                    <h3>Chiranjib Bhattacharyya</h3>
+                    <p>Professor<br>CSA, IISc</p>
                 </div>
                 <div class="speaker-card" onclick="window.open('https://www.linkedin.com/in/earnestchannel/', '_blank')">
-                    <img src="assets/nate.jpeg" alt="ate Earnest-Noble" />
+                    <img src="assets/nate.jpeg" alt="Nate Earnest-Noble" />
                     <h3>Nate Earnest-Noble</h3>
                     <p>Quantum Algorithm Engineering Global Lead<br>IBM</p>
-                </div>
-                <div class="speaker-card" onclick="window.open('https://research.ibm.com/people/ritajit-majumdar--1', '_blank')">
-                    <img src="assets/ritajit.png" alt="Ritajit Majumdar" />
-                    <h3>Ritajit Majumdar</h3>
-                    <p>Research Scientist<br>IBM Quantum</p>
-                </div>
-                <div class="speaker-card" onclick="window.open('https://research.ibm.com/people/dhinakaran-vinayagamurthy', '_blank')">
-                    <img src="assets/dhina.png" alt="Dhinakaran Vinayagamurthy" />
-                    <h3>Dhinakaran Vinayagamurthy</h3>
-                    <p>Staff Research Scientist<br>IBM Quantum</p>
-                </div>
-                <div class="speaker-card" onclick="window.open('https://research.ibm.com/people/anupama-ray', '_blank')">
-                    <img src="assets/anupama.webp" alt="Anupama Ray" />
-                    <h3>Anupama Ray</h3>
-                    <p>Senior Research Scientist<br>IBM Research</p>
-                </div>
-            </div>
-            <div class="speakers-grid">
-                <div class="speaker-card" onclick="window.open('https://en.wikipedia.org/wiki/Apoorva_D._Patel', '_blank')">
-                    <img src="assets/apoorva.jpg" alt="Apoorva" />
-                    <h3>Apoorva D. Patel</h3>
-                    <p>Professor<br>CHEP, IISc</p>
                 </div>
                 <div class="speaker-card" onclick="window.open('https://www.linkedin.com/in/arindam-ghosh-1201b122/?original_referer=https%3A%2F%2Fwww%2Egoogle%2Ecom%2F&originalSubdomain=in', '_blank')">
                     <img src="assets/arindam.webp" alt="Arindam Ghosh" />
                     <h3>Arindam Ghosh</h3>
                     <p>Professor<br>Physics Dept, IISc</p>
                 </div>
+                <div class="speaker-card" onclick="window.open('https://research.ibm.com/people/shraddha-singh', '_blank')">
+                    <img src="assets/shraddha Singh.jpeg" alt="Shraddha Singh" />
+                    <h3>Shraddha Singh</h3>
+                    <p>Research Scientist<br>IBM New York, USA</p>
+                </div>
+                <div class="speaker-card" onclick="window.open('https://www.linkedin.com/in/lvsubramaniam/?originalSubdomain=in', '_blank')">
+                    <img src="assets/venkat.jpeg" alt="Venkat" />
+                    <h3>L Venkata Subramaniam</h3>
+                    <p>Head<br>IBM Quantum India</p>
+                </div>
+            </div>
+            <div class="speakers-grid">
+                <div class="speaker-card" onclick="window.open('https://eecs.iisc.ac.in/people/navin-kashyap/', '_blank')">
+                    <img src="assets/navin.jpg" alt="Navin Kashyap" />
+                    <h3>Navin Kashyap</h3>
+                    <p>Professor<br>ECE, IISc</p>
+                </div>
+                <div class="speaker-card" onclick="window.open('https://research.ibm.com/people/dhinakaran-vinayagamurthy', '_blank')">
+                    <img src="assets/dhina.png" alt="Dhinakaran Vinayagamurthy" />
+                    <h3>Dhinakaran Vinayagamurthy</h3>
+                    <p>Staff Research Scientist<br>IBM Quantum</p>
+                </div>
                 <div class="speaker-card" onclick="window.open('https://www.linkedin.com/in/arun-pati-306834133/?originalSubdomain=in', '_blank')">
                     <img src="assets/arun.jpeg" alt="Arun Pati" />
                     <h3>Arun K. Pati</h3>
                     <p>Director<br>QETCI</p>
                 </div>
-                <div class="speaker-card" onclick="window.open('https://www.linkedin.com/in/kalyan-dasgupta-69195b24/', '_blank')">
-                    <img src="assets/kalyan.png" alt="Kalyan Dasgupta" />
-                    <h3>Kalyan Dasgupta</h3>
-                    <p>Research Staff Member<br>IBM Research</p>
+                <div class="speaker-card" onclick="window.open('https://research.ibm.com/people/ritajit-majumdar--1', '_blank')">
+                    <img src="assets/ritajit.png" alt="Ritajit Majumdar" />
+                    <h3>Ritajit Majumdar</h3>
+                    <p>Research Scientist<br>IBM Quantum</p>
                 </div>
+                <div class="speaker-card" onclick="window.open('https://en.wikipedia.org/wiki/Apoorva_D._Patel', '_blank')">
+                    <img src="assets/apoorva.jpg" alt="Apoorva" />
+                    <h3>Apoorva D. Patel</h3>
+                    <p>Professor<br>CHEP, IISc</p>
+                </div>
+            </div>
+            <div class="speakers-grid">
                 <div class="speaker-card" onclick="window.open('https://www.linkedin.com/in/janani-anantha/?originalSubdomain=in', '_blank')">
                     <img src="assets/janani.jpeg" alt="Janani A" />
                     <h3>Janani A.</h3>
-                    <p>Quantum Support Engineer<br>IBM Research</p>SSSS
-                </div>
-            </div>
-            <div class="speakers-grid-sanjit">
-                <div class="speaker-card" onclick="window.open('https://eecs.iisc.ac.in/people/chiranjib-bhattacharyya/', '_blank')">
-                    <img src="assets/chiru.jpg" alt="Chiranjib Bhattacharyya" />
-                    <h3>Chiranjib Bhattacharyya</h3>
-                    <p>Professor<br>CSA, IISc</p>
-                </div>
-                <div class="speaker-card" onclick="window.open('https://eecs.iisc.ac.in/people/navin-kashyap/', '_blank')">
-                    <img src="assets/navin.jpg" alt="Navin Kashyap" />
-                    <h3>Navin Kashyap</h3>
-                    <p>Professor<br>ECE, IISc</p>
+                    <p>Quantum Support Engineer<br>IBM Research</p>
                 </div>
                 <div class="speaker-card" onclick="window.open('https://eecs.iisc.ac.in/people/c-m-chandrashekar/', '_blank')">
                     <img src="assets/chandru.jpg" alt="C. M. Chandrashekar" />
                     <h3>C. M. Chandrashekar</h3>
                     <p>Assistant Professor<br>DESE, IISc</p>
                 </div>
+                <div class="speaker-card" onclick="window.open('https://research.ibm.com/people/anupama-ray', '_blank')">
+                    <img src="assets/anupama.webp" alt="Anupama Ray" />
+                    <h3>Anupama Ray</h3>
+                    <p>Senior Research Scientist<br>IBM Research</p>
+                </div>
                 <div class="speaker-card" onclick="window.open('https://eecs.iisc.ac.in/people/sanjit-chatterjee/', '_blank')">
                     <img src="assets/sanjit.webp" alt="Sanjit" />
                     <h3>Sanjit Chatterjee</h3>
                     <p>Associate Professor<br>CSA, IISc</p>
+                </div>
+                <div class="speaker-card" onclick="window.open('https://www.linkedin.com/in/kalyan-dasgupta-69195b24/', '_blank')">
+                    <img src="assets/kalyan.png" alt="Kalyan Dasgupta" />
+                    <h3>Kalyan Dasgupta</h3>
+                    <p>Research Staff Member<br>IBM Research</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Showcase Section -->
+        <section id="events" class="events-showcase">
+            <h2>Featured Events</h2>
+            <div class="events-grid">
+                <div class="event-card" onclick="window.open('challenge.html', '_self')">
+                    <div class="event-poster">
+                        <img src="assets/eigen_trails_poster.png" alt="Eigen Trails" />
+                    </div>
+                    <div class="event-info">
+                        <h3>Eigen Trails</h3>
+                        <p>Challenge yourself with quantum computing problems and compete on the leaderboard!</p>
+                        <span class="event-cta">Explore Challenges →</span>
+                    </div>
+                </div>
+                <div class="event-card" onclick="window.open('https://superpose24.com/', '_blank')">
+                    <div class="event-poster">
+                        <img src="assets/superpose24_poster.png" alt="Superpose 2024" />
+                    </div>
+                    <div class="event-info">
+                        <h3>Superpose 2024</h3>
+                        <p>Join us for the premier quantum computing conference and networking event.</p>
+                        <span class="event-cta">Learn More →</span>
+                    </div>
                 </div>
             </div>
         </section>

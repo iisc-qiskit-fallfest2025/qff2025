@@ -1,0 +1,2 @@
+# No Python dependencies needed for static site
+# This file is required for App Engine Python runtime
