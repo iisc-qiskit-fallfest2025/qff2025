@@ -96,6 +96,12 @@ function loadLeaderboard() {
                 const entanglementHeistTime = participant.entanglementHeistTime || '--';
                 const beADicke = Number(participant.beADicke) || 0;
                 const beADickeTime = participant.beADickeTime || '--';
+                const cookMeGhz = Number(participant.cookMeGhz) || 0;
+                const cookMeGhzTime = participant.cookMeGhzTime || '--';
+                const willOfW = Number(participant.willOfW) || 0;
+                const willOfWTime = participant.willOfWTime || '--';
+                const matrixReloaded = Number(participant.matrixReloaded) || 0;
+                const matrixReloadedTime = participant.matrixReloadedTime || '--';
                 const totalScore = Number(participant.score) || 0;
                 
                 // Debug logging (remove after testing)
@@ -103,7 +109,10 @@ function loadLeaderboard() {
                     console.log('Participant data:', {
                         ringTheBell, ringTheBellTime,
                         entanglementHeist, entanglementHeistTime,
-                        beADicke, beADickeTime
+                        beADicke, beADickeTime,
+                        cookMeGhz, cookMeGhzTime,
+                        willOfW, willOfWTime,
+                        matrixReloaded, matrixReloadedTime
                     });
                 }
                 
@@ -124,7 +133,10 @@ function loadLeaderboard() {
                     <td class="challenge-cell">${formatTrailCell(ringTheBell, 5, ringTheBellTime)}</td>
                     <td class="challenge-cell">${formatTrailCell(entanglementHeist, 10, entanglementHeistTime)}</td>
                     <td class="challenge-cell">${formatTrailCell(beADicke, 20, beADickeTime)}</td>
-                    <td class="score-cell">${totalScore.toFixed(1)}/35</td>
+                    <td class="challenge-cell">${formatTrailCell(cookMeGhz, 5, cookMeGhzTime)}</td>
+                    <td class="challenge-cell">${formatTrailCell(willOfW, 10, willOfWTime)}</td>
+                    <td class="challenge-cell">${formatTrailCell(matrixReloaded, 20, matrixReloadedTime)}</td>
+                    <td class="score-cell">${totalScore.toFixed(1)}/70</td>
                 `;
                 
                 bodyElement.appendChild(row);
@@ -132,7 +144,7 @@ function loadLeaderboard() {
             
             if (leaderboardData.length === 0) {
                 const emptyRow = document.createElement('tr');
-                emptyRow.innerHTML = '<td colspan="6" style="text-align: center; padding: 2rem; color: var(--color-muted);">No submissions yet. Be the first to embark on a trail!</td>';
+                emptyRow.innerHTML = '<td colspan="9" style="text-align: center; padding: 2rem; color: var(--color-muted);">No submissions yet. Be the first to embark on a trail!</td>';
                 bodyElement.appendChild(emptyRow);
             }
         })
