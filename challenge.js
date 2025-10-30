@@ -232,27 +232,33 @@ function setupFormSubmission() {
     // Handle challenge selection changes
     challengeSelect.addEventListener('change', function() {
         const selectedChallenge = this.value;
-        const qpyFileGroup = document.getElementById('qpy-file').closest('.form-group');
+        
+        // Get elements with safety checks
+        const qpyFileInput = document.getElementById('qpy-file');
+        const qpyFileGroup = qpyFileInput ? qpyFileInput.closest('.form-group') : null;
         const pyFileGroup = document.getElementById('py-file-group');
         const expectationValueGroup = document.getElementById('expectation-value-group');
-        const qpyFileInput = document.getElementById('qpy-file');
         const pyFileInput = document.getElementById('py-file');
         const expectationValueInput = document.getElementById('expectation-value');
         
-        // Reset all fields (with null checks)
-        if (qpyFileGroup) qpyFileGroup.style.display = 'block';
-        if (pyFileGroup) pyFileGroup.style.display = 'none';
-        if (expectationValueGroup) expectationValueGroup.style.display = 'none';
-        if (qpyFileInput) qpyFileInput.required = true;
-        if (pyFileInput) pyFileInput.required = false;
-        if (expectationValueInput) expectationValueInput.required = false;
-        
-        // Show appropriate fields based on challenge
-        if (selectedChallenge === 'parity-time') {
-            if (qpyFileGroup) qpyFileGroup.style.display = 'none';
-            if (pyFileGroup) pyFileGroup.style.display = 'block';
-            if (qpyFileInput) qpyFileInput.required = false;
-            if (pyFileInput) pyFileInput.required = true;
+        // Reset all fields (with comprehensive null checks)
+        try {
+            if (qpyFileGroup) qpyFileGroup.style.display = 'block';
+            if (pyFileGroup) pyFileGroup.style.display = 'none';
+            if (expectationValueGroup) expectationValueGroup.style.display = 'none';
+            if (qpyFileInput) qpyFileInput.required = true;
+            if (pyFileInput) pyFileInput.required = false;
+            if (expectationValueInput) expectationValueInput.required = false;
+            
+            // Show appropriate fields based on challenge
+            if (selectedChallenge === 'parity-time') {
+                if (qpyFileGroup) qpyFileGroup.style.display = 'none';
+                if (pyFileGroup) pyFileGroup.style.display = 'block';
+                if (qpyFileInput) qpyFileInput.required = false;
+                if (pyFileInput) pyFileInput.required = true;
+            }
+        } catch (error) {
+            console.error('Error updating form fields:', error);
         }
         // Note: pauli-chronicles now only requires .qpy file, no expectation value
     });
