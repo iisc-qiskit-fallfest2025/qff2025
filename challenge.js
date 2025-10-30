@@ -102,6 +102,12 @@ function loadLeaderboard() {
                 const willOfWTime = participant.willOfWTime || '--';
                 const matrixReloaded = Number(participant.matrixReloaded) || 0;
                 const matrixReloadedTime = participant.matrixReloadedTime || '--';
+                const energyHunter = Number(participant.energyHunter) || 0;
+                const energyHunterTime = participant.energyHunterTime || '--';
+                const pauliChronicles = Number(participant.pauliChronicles) || 0;
+                const pauliChroniclesTime = participant.pauliChroniclesTime || '--';
+                const parityTime = Number(participant.parityTime) || 0;
+                const parityTimeTime = participant.parityTimeTime || '--';
                 const totalScore = Number(participant.score) || 0;
                 
                 // Debug logging (remove after testing)
@@ -136,7 +142,10 @@ function loadLeaderboard() {
                     <td class="challenge-cell">${formatTrailCell(cookMeGhz, 5, cookMeGhzTime)}</td>
                     <td class="challenge-cell">${formatTrailCell(willOfW, 10, willOfWTime)}</td>
                     <td class="challenge-cell">${formatTrailCell(matrixReloaded, 20, matrixReloadedTime)}</td>
-                    <td class="score-cell">${totalScore.toFixed(1)}/70</td>
+                    <td class="challenge-cell">${formatTrailCell(energyHunter, 10, energyHunterTime)}</td>
+                    <td class="challenge-cell">${formatTrailCell(pauliChronicles, 10, pauliChroniclesTime)}</td>
+                    <td class="challenge-cell">${formatTrailCell(parityTime, 20, parityTimeTime)}</td>
+                    <td class="score-cell">${totalScore.toFixed(1)}/110</td>
                 `;
                 
                 bodyElement.appendChild(row);
@@ -144,7 +153,7 @@ function loadLeaderboard() {
             
             if (leaderboardData.length === 0) {
                 const emptyRow = document.createElement('tr');
-                emptyRow.innerHTML = '<td colspan="9" style="text-align: center; padding: 2rem; color: var(--color-muted);">No submissions yet. Be the first to embark on a trail!</td>';
+                emptyRow.innerHTML = '<td colspan="12" style="text-align: center; padding: 2rem; color: var(--color-muted);">No submissions yet. Be the first to embark on a trail!</td>';
                 bodyElement.appendChild(emptyRow);
             }
         })
@@ -211,6 +220,37 @@ function setupFormSubmission() {
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoading = submitBtn.querySelector('.btn-loading');
     const resultDiv = document.getElementById('submission-result');
+    const challengeSelect = document.getElementById('challenge-select');
+    
+    // Handle challenge selection changes
+    challengeSelect.addEventListener('change', function() {
+        const selectedChallenge = this.value;
+        const qpyFileGroup = document.getElementById('qpy-file').closest('.form-group');
+        const pyFileGroup = document.getElementById('py-file-group');
+        const expectationValueGroup = document.getElementById('expectation-value-group');
+        const qpyFileInput = document.getElementById('qpy-file');
+        const pyFileInput = document.getElementById('py-file');
+        const expectationValueInput = document.getElementById('expectation-value');
+        
+        // Reset all fields
+        qpyFileGroup.style.display = 'block';
+        pyFileGroup.style.display = 'none';
+        expectationValueGroup.style.display = 'none';
+        qpyFileInput.required = true;
+        pyFileInput.required = false;
+        expectationValueInput.required = false;
+        
+        // Show appropriate fields based on challenge
+        if (selectedChallenge === 'parity-time') {
+            qpyFileGroup.style.display = 'none';
+            pyFileGroup.style.display = 'block';
+            qpyFileInput.required = false;
+            pyFileInput.required = true;
+        } else if (selectedChallenge === 'pauli-chronicles') {
+            expectationValueGroup.style.display = 'block';
+            expectationValueInput.required = true;
+        }
+    });
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -224,12 +264,30 @@ function setupFormSubmission() {
         // Get form data
         const formData = new FormData(form);
         const challengeSelect = document.getElementById('challenge-select');
+        const selectedChallenge = challengeSelect.value;
         const email = document.getElementById('email');
-        const fileInput = document.getElementById('qpy-file');
+        const qpyFileInput = document.getElementById('qpy-file');
+        const pyFileInput = document.getElementById('py-file');
+        const expectationValueInput = document.getElementById('expectation-value');
 
-        // Validate file
-        if (!validateFile(fileInput.files[0])) {
-            showSubmissionResult('error', 'Please upload a valid .qpy file (max 10MB)');
+        // Validate file based on challenge type
+        if (selectedChallenge === 'parity-time') {
+            if (!validatePyFile(pyFileInput.files[0])) {
+                showSubmissionResult('error', 'Please upload a valid .py file (max 1MB)');
+                resetSubmitButton();
+                return;
+            }
+        } else {
+            if (!validateFile(qpyFileInput.files[0])) {
+                showSubmissionResult('error', 'Please upload a valid .qpy file (max 10MB)');
+                resetSubmitButton();
+                return;
+            }
+        }
+        
+        // Validate expectation value for Pauli Chronicles
+        if (selectedChallenge === 'pauli-chronicles' && !expectationValueInput.value) {
+            showSubmissionResult('error', 'Please enter the expectation value for Pauli Chronicles challenge');
             resetSubmitButton();
             return;
         }
@@ -239,10 +297,24 @@ function setupFormSubmission() {
             const response = await simulateSubmission(formData);
             
             const maxScore = response.max_score || 100;
-            showSubmissionResult('success', `Trail solution submitted successfully! Your submission for "${challengeSelect.options[challengeSelect.selectedIndex].text}" has been received. Score: ${response.score?.toFixed(1) || 'N/A'}/${maxScore}`);
+            let successMessage = `Trail solution submitted successfully! Your submission for "${challengeSelect.options[challengeSelect.selectedIndex].text}" has been received. Score: ${response.score?.toFixed(1) || 'N/A'}/${maxScore}`;
+            
+            // Add test cases info for parity-time challenge
+            if (selectedChallenge === 'parity-time' && response.analysis) {
+                const casesPassed = response.analysis.cases_passed || 0;
+                const totalCases = response.analysis.total_cases || 50;
+                successMessage += `\n\nTest Cases Passed: ${casesPassed}/${totalCases}`;
+            }
+            
+            showSubmissionResult('success', successMessage);
             
             // Reset form
             form.reset();
+            
+            // Reset field visibility
+            document.getElementById('qpy-file').closest('.form-group').style.display = 'block';
+            document.getElementById('py-file-group').style.display = 'none';
+            document.getElementById('expectation-value-group').style.display = 'none';
             
             // Reload leaderboard after successful submission
             setTimeout(loadLeaderboard, 1000);
@@ -279,15 +351,35 @@ function validateFile(file) {
     return true;
 }
 
-function setupFileUpload() {
-    const fileInput = document.getElementById('qpy-file');
-    const container = fileInput.closest('.file-upload-container');
+function validatePyFile(file) {
+    if (!file) return false;
     
-    fileInput.addEventListener('change', function(e) {
+    // Check file extension
+    if (!file.name.toLowerCase().endsWith('.py')) {
+        return false;
+    }
+    
+    // Check file size (1MB limit for .py files)
+    const maxSize = 1 * 1024 * 1024; // 1MB in bytes
+    if (file.size > maxSize) {
+        return false;
+    }
+    
+    return true;
+}
+
+function setupFileUpload() {
+    const qpyFileInput = document.getElementById('qpy-file');
+    const pyFileInput = document.getElementById('py-file');
+    const qpyContainer = qpyFileInput.closest('.file-upload-container');
+    const pyContainer = pyFileInput.closest('.file-upload-container');
+    
+    // Setup QPY file upload
+    qpyFileInput.addEventListener('change', function(e) {
         const file = e.target.files[0];
         
         // Remove any existing file info
-        const existingInfo = container.querySelector('.file-selected-info');
+        const existingInfo = qpyContainer.querySelector('.file-selected-info');
         if (existingInfo) {
             existingInfo.remove();
         }
@@ -302,7 +394,31 @@ function setupFileUpload() {
                     ${validateFile(file) ? '✓ Valid .qpy file' : '✗ Invalid file or too large'}
                 </p>
             `;
-            container.appendChild(fileInfo);
+            qpyContainer.appendChild(fileInfo);
+        }
+    });
+    
+    // Setup Python file upload
+    pyFileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        
+        // Remove any existing file info
+        const existingInfo = pyContainer.querySelector('.file-selected-info');
+        if (existingInfo) {
+            existingInfo.remove();
+        }
+        
+        if (file) {
+            const fileInfo = document.createElement('div');
+            fileInfo.className = 'file-selected-info';
+            fileInfo.innerHTML = `
+                <p><strong>Selected:</strong> ${file.name}</p>
+                <p><strong>Size:</strong> ${formatFileSize(file.size)}</p>
+                <p class="${validatePyFile(file) ? 'valid' : 'invalid'}">
+                    ${validatePyFile(file) ? '✓ Valid .py file' : '✗ Invalid file or too large'}
+                </p>
+            `;
+            pyContainer.appendChild(fileInfo);
         }
     });
 }

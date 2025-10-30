@@ -115,6 +115,9 @@
                                     <th class="challenge-col">Cook Me GHZ</th>
                                     <th class="challenge-col">Will of the W</th>
                                     <th class="challenge-col">Matrix Reloaded</th>
+                                    <th class="challenge-col">Energy Hunter</th>
+                                    <th class="challenge-col">Pauli Chronicles</th>
+                                    <th class="challenge-col">Parity Time</th>
                                     <th class="score-col">Total Score</th>
                                 </tr>
                             </thead>
@@ -142,6 +145,9 @@
                             <option value="cook-me-ghz">Cook Me GHZ (5 pts - 4-qubit GHZ state)</option>
                             <option value="will-of-w">Will of the W (10 pts - W state)</option>
                             <option value="matrix-reloaded">Matrix Reloaded (20 pts - Block encoding)</option>
+                            <option value="energy-hunter">Energy Hunter (10 pts - VQE)</option>
+                            <option value="pauli-chronicles">Pauli String Chronicles (10 pts - Expectation value)</option>
+                            <option value="parity-time">It's Parity Time (20 pts - Parity check gadget)</option>
                         </select>
                     </div>
 
@@ -153,11 +159,31 @@
                     <div class="form-group">
                         <label for="qpy-file">Upload .qpy File:</label>
                         <div class="file-upload-container">
-                            <input type="file" id="qpy-file" name="qpy-file" accept=".qpy" required />
+                            <input type="file" id="qpy-file" name="qpy-file" accept=".qpy" />
                             <div class="file-upload-info">
                                 <p>Please upload your quantum circuit as a .qpy file</p>
                                 <p class="file-size-limit">Maximum file size: 10MB</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="py-file-group" style="display: none;">
+                        <label for="py-file">Upload .py File:</label>
+                        <div class="file-upload-container">
+                            <input type="file" id="py-file" name="py-file" accept=".py" />
+                            <div class="file-upload-info">
+                                <p>Please upload your Python solution file (for Parity Time challenge)</p>
+                                <p class="file-size-limit">Maximum file size: 1MB</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="expectation-value-group" style="display: none;">
+                        <label for="expectation-value">Expectation Value:</label>
+                        <input type="number" id="expectation-value" name="expectation-value" 
+                               step="0.0000000001" placeholder="Enter expectation value (e.g., -0.00242)" />
+                        <div class="file-upload-info">
+                            <p>Enter the computed expectation value for the observable (for Pauli Chronicles challenge)</p>
                         </div>
                     </div>
 
