@@ -58,9 +58,9 @@ function startCountdownTimer() {
 }
 
 // API endpoints
-const API_BASE_URL = 'https://us-central1-exalted-tempo-322013.cloudfunctions.net';
-const SUBMIT_ENDPOINT = `${API_BASE_URL}/submit-challenge`;
-const LEADERBOARD_ENDPOINT = `${API_BASE_URL}/get-leaderboard`;
+const API_BASE_URL = 'https://challenge-backend-dot-exalted-tempo-322013.el.r.appspot.com';
+const SUBMIT_ENDPOINT = `${API_BASE_URL}/challenge-backend`;
+const LEADERBOARD_ENDPOINT = `${API_BASE_URL}/challenge-backend`;
 
 function loadLeaderboard() {
     const loadingElement = document.getElementById('leaderboard-loading');
