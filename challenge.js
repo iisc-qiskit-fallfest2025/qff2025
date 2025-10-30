@@ -236,31 +236,20 @@ function setupFormSubmission() {
         // Get elements with safety checks
         const qpyFileInput = document.getElementById('qpy-file');
         const qpyFileGroup = qpyFileInput ? qpyFileInput.closest('.form-group') : null;
-        const pyFileGroup = document.getElementById('py-file-group');
         const expectationValueGroup = document.getElementById('expectation-value-group');
-        const pyFileInput = document.getElementById('py-file');
         const expectationValueInput = document.getElementById('expectation-value');
         
         // Reset all fields (with comprehensive null checks)
         try {
             if (qpyFileGroup) qpyFileGroup.style.display = 'block';
-            if (pyFileGroup) pyFileGroup.style.display = 'none';
             if (expectationValueGroup) expectationValueGroup.style.display = 'none';
-            if (qpyFileInput) qpyFileInput.required = true;
-            if (pyFileInput) pyFileInput.required = false;
             if (expectationValueInput) expectationValueInput.required = false;
             
-            // Show appropriate fields based on challenge
-            if (selectedChallenge === 'parity-time') {
-                if (qpyFileGroup) qpyFileGroup.style.display = 'none';
-                if (pyFileGroup) pyFileGroup.style.display = 'block';
-                if (qpyFileInput) qpyFileInput.required = false;
-                if (pyFileInput) pyFileInput.required = true;
-            }
+            // All challenges now use .qpy files only - no special handling needed
         } catch (error) {
             console.error('Error updating form fields:', error);
         }
-        // Note: pauli-chronicles now only requires .qpy file, no expectation value
+        // Note: All challenges now require .qpy file only
     });
 
     form.addEventListener('submit', async function(e) {
@@ -278,25 +267,16 @@ function setupFormSubmission() {
         const selectedChallenge = challengeSelect.value;
         const email = document.getElementById('email');
         const qpyFileInput = document.getElementById('qpy-file');
-        const pyFileInput = document.getElementById('py-file');
         const expectationValueInput = document.getElementById('expectation-value');
 
-        // Validate file based on challenge type
-        if (selectedChallenge === 'parity-time') {
-            if (!validatePyFile(pyFileInput.files[0])) {
-                showSubmissionResult('error', 'Please upload a valid .py file (max 1MB)');
-                resetSubmitButton();
-                return;
-            }
-        } else {
-            if (!validateFile(qpyFileInput.files[0])) {
-                showSubmissionResult('error', 'Please upload a valid .qpy file (max 10MB)');
-                resetSubmitButton();
-                return;
-            }
+        // Validate file - all challenges now use .qpy files
+        if (!validateFile(qpyFileInput.files[0])) {
+            showSubmissionResult('error', 'Please upload a valid .qpy file (max 10MB)');
+            resetSubmitButton();
+            return;
         }
         
-        // Note: Pauli Chronicles no longer requires expectation value validation
+        // Note: All challenges now require .qpy file only
 
         try {
             // Submit to API
@@ -308,7 +288,7 @@ function setupFormSubmission() {
             // Add test cases info for parity-time challenge
             if (selectedChallenge === 'parity-time' && response.analysis) {
                 const casesPassed = response.analysis.cases_passed || 0;
-                const totalCases = response.analysis.total_cases || 50;
+                const totalCases = response.analysis.total_cases || 5;
                 successMessage += `\n\nTest Cases Passed: ${casesPassed}/${totalCases}`;
             }
             
@@ -319,11 +299,9 @@ function setupFormSubmission() {
             
             // Reset field visibility (with null checks)
             const qpyFileGroup = document.getElementById('qpy-file')?.closest('.form-group');
-            const pyFileGroup = document.getElementById('py-file-group');
             const expectationValueGroup = document.getElementById('expectation-value-group');
             
             if (qpyFileGroup) qpyFileGroup.style.display = 'block';
-            if (pyFileGroup) pyFileGroup.style.display = 'none';
             if (expectationValueGroup) expectationValueGroup.style.display = 'none';
             
             // Reload leaderboard after successful submission
@@ -361,28 +339,9 @@ function validateFile(file) {
     return true;
 }
 
-function validatePyFile(file) {
-    if (!file) return false;
-    
-    // Check file extension
-    if (!file.name.toLowerCase().endsWith('.py')) {
-        return false;
-    }
-    
-    // Check file size (1MB limit for .py files)
-    const maxSize = 1 * 1024 * 1024; // 1MB in bytes
-    if (file.size > maxSize) {
-        return false;
-    }
-    
-    return true;
-}
-
 function setupFileUpload() {
     const qpyFileInput = document.getElementById('qpy-file');
-    const pyFileInput = document.getElementById('py-file');
     const qpyContainer = qpyFileInput.closest('.file-upload-container');
-    const pyContainer = pyFileInput.closest('.file-upload-container');
     
     // Setup QPY file upload
     qpyFileInput.addEventListener('change', function(e) {
@@ -405,30 +364,6 @@ function setupFileUpload() {
                 </p>
             `;
             qpyContainer.appendChild(fileInfo);
-        }
-    });
-    
-    // Setup Python file upload
-    pyFileInput.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        
-        // Remove any existing file info
-        const existingInfo = pyContainer.querySelector('.file-selected-info');
-        if (existingInfo) {
-            existingInfo.remove();
-        }
-        
-        if (file) {
-            const fileInfo = document.createElement('div');
-            fileInfo.className = 'file-selected-info';
-            fileInfo.innerHTML = `
-                <p><strong>Selected:</strong> ${file.name}</p>
-                <p><strong>Size:</strong> ${formatFileSize(file.size)}</p>
-                <p class="${validatePyFile(file) ? 'valid' : 'invalid'}">
-                    ${validatePyFile(file) ? '✓ Valid .py file' : '✗ Invalid file or too large'}
-                </p>
-            `;
-            pyContainer.appendChild(fileInfo);
         }
     });
 }
