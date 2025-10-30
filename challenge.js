@@ -108,7 +108,9 @@ function loadLeaderboard() {
                 const pauliChroniclesTime = participant.pauliChroniclesTime || '--';
                 const parityTime = Number(participant.parityTime) || 0;
                 const parityTimeTime = participant.parityTimeTime || '--';
-                const totalScore = Number(participant.score) || 0;
+                
+                // Calculate total score from all individual challenge scores
+                const totalScore = ringTheBell + entanglementHeist + beADicke + cookMeGhz + willOfW + matrixReloaded + energyHunter + pauliChronicles + parityTime;
                 
                 // Debug logging (remove after testing)
                 if (index === 0) {
@@ -118,7 +120,12 @@ function loadLeaderboard() {
                         beADicke, beADickeTime,
                         cookMeGhz, cookMeGhzTime,
                         willOfW, willOfWTime,
-                        matrixReloaded, matrixReloadedTime
+                        matrixReloaded, matrixReloadedTime,
+                        energyHunter, energyHunterTime,
+                        pauliChronicles, pauliChroniclesTime,
+                        parityTime, parityTimeTime,
+                        calculatedTotal: totalScore,
+                        backendScore: participant.score
                     });
                 }
                 
