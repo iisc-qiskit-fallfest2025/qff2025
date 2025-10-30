@@ -239,20 +239,20 @@ function setupFormSubmission() {
         const pyFileInput = document.getElementById('py-file');
         const expectationValueInput = document.getElementById('expectation-value');
         
-        // Reset all fields
-        qpyFileGroup.style.display = 'block';
-        pyFileGroup.style.display = 'none';
-        expectationValueGroup.style.display = 'none';
-        qpyFileInput.required = true;
-        pyFileInput.required = false;
-        expectationValueInput.required = false;
+        // Reset all fields (with null checks)
+        if (qpyFileGroup) qpyFileGroup.style.display = 'block';
+        if (pyFileGroup) pyFileGroup.style.display = 'none';
+        if (expectationValueGroup) expectationValueGroup.style.display = 'none';
+        if (qpyFileInput) qpyFileInput.required = true;
+        if (pyFileInput) pyFileInput.required = false;
+        if (expectationValueInput) expectationValueInput.required = false;
         
         // Show appropriate fields based on challenge
         if (selectedChallenge === 'parity-time') {
-            qpyFileGroup.style.display = 'none';
-            pyFileGroup.style.display = 'block';
-            qpyFileInput.required = false;
-            pyFileInput.required = true;
+            if (qpyFileGroup) qpyFileGroup.style.display = 'none';
+            if (pyFileGroup) pyFileGroup.style.display = 'block';
+            if (qpyFileInput) qpyFileInput.required = false;
+            if (pyFileInput) pyFileInput.required = true;
         }
         // Note: pauli-chronicles now only requires .qpy file, no expectation value
     });
@@ -311,10 +311,14 @@ function setupFormSubmission() {
             // Reset form
             form.reset();
             
-            // Reset field visibility
-            document.getElementById('qpy-file').closest('.form-group').style.display = 'block';
-            document.getElementById('py-file-group').style.display = 'none';
-            document.getElementById('expectation-value-group').style.display = 'none';
+            // Reset field visibility (with null checks)
+            const qpyFileGroup = document.getElementById('qpy-file')?.closest('.form-group');
+            const pyFileGroup = document.getElementById('py-file-group');
+            const expectationValueGroup = document.getElementById('expectation-value-group');
+            
+            if (qpyFileGroup) qpyFileGroup.style.display = 'block';
+            if (pyFileGroup) pyFileGroup.style.display = 'none';
+            if (expectationValueGroup) expectationValueGroup.style.display = 'none';
             
             // Reload leaderboard after successful submission
             setTimeout(loadLeaderboard, 1000);
