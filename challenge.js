@@ -58,9 +58,9 @@ function startCountdownTimer() {
 }
 
 // API endpoints
-const API_BASE_URL = 'https://us-central1-exalted-tempo-322013.cloudfunctions.net';
-const SUBMIT_ENDPOINT = `${API_BASE_URL}/submit-challenge`;
-const LEADERBOARD_ENDPOINT = `${API_BASE_URL}/get-leaderboard`;
+const API_BASE_URL = 'https://challenge-backend-dot-exalted-tempo-322013.el.r.appspot.com';
+const SUBMIT_ENDPOINT = `${API_BASE_URL}/challenge-backend`;
+const LEADERBOARD_ENDPOINT = `${API_BASE_URL}/challenge-backend`;
 
 function loadLeaderboard() {
     const loadingElement = document.getElementById('leaderboard-loading');
@@ -102,7 +102,15 @@ function loadLeaderboard() {
                 const willOfWTime = participant.willOfWTime || '--';
                 const matrixReloaded = Number(participant.matrixReloaded) || 0;
                 const matrixReloadedTime = participant.matrixReloadedTime || '--';
-                const totalScore = Number(participant.score) || 0;
+                const energyHunter = Number(participant.energyHunter) || 0;
+                const energyHunterTime = participant.energyHunterTime || '--';
+                const pauliChronicles = Number(participant.pauliChronicles) || 0;
+                const pauliChroniclesTime = participant.pauliChroniclesTime || '--';
+                const parityTime = Number(participant.parityTime) || 0;
+                const parityTimeTime = participant.parityTimeTime || '--';
+                
+                // Calculate total score from all individual challenge scores
+                const totalScore = ringTheBell + entanglementHeist + beADicke + cookMeGhz + willOfW + matrixReloaded + energyHunter + pauliChronicles + parityTime;
                 
                 // Debug logging (remove after testing)
                 if (index === 0) {
@@ -112,7 +120,12 @@ function loadLeaderboard() {
                         beADicke, beADickeTime,
                         cookMeGhz, cookMeGhzTime,
                         willOfW, willOfWTime,
-                        matrixReloaded, matrixReloadedTime
+                        matrixReloaded, matrixReloadedTime,
+                        energyHunter, energyHunterTime,
+                        pauliChronicles, pauliChroniclesTime,
+                        parityTime, parityTimeTime,
+                        calculatedTotal: totalScore,
+                        backendScore: participant.score
                     });
                 }
                 
@@ -136,7 +149,10 @@ function loadLeaderboard() {
                     <td class="challenge-cell">${formatTrailCell(cookMeGhz, 5, cookMeGhzTime)}</td>
                     <td class="challenge-cell">${formatTrailCell(willOfW, 10, willOfWTime)}</td>
                     <td class="challenge-cell">${formatTrailCell(matrixReloaded, 20, matrixReloadedTime)}</td>
-                    <td class="score-cell">${totalScore.toFixed(1)}/70</td>
+                    <td class="challenge-cell">${formatTrailCell(energyHunter, 10, energyHunterTime)}</td>
+                    <td class="challenge-cell">${formatTrailCell(pauliChronicles, 10, pauliChroniclesTime)}</td>
+                    <td class="challenge-cell">${formatTrailCell(parityTime, 20, parityTimeTime)}</td>
+                    <td class="score-cell">${totalScore.toFixed(1)}/110</td>
                 `;
                 
                 bodyElement.appendChild(row);
@@ -144,7 +160,7 @@ function loadLeaderboard() {
             
             if (leaderboardData.length === 0) {
                 const emptyRow = document.createElement('tr');
-                emptyRow.innerHTML = '<td colspan="9" style="text-align: center; padding: 2rem; color: var(--color-muted);">No submissions yet. Be the first to embark on a trail!</td>';
+                emptyRow.innerHTML = '<td colspan="12" style="text-align: center; padding: 2rem; color: var(--color-muted);">No submissions yet. Be the first to embark on a trail!</td>';
                 bodyElement.appendChild(emptyRow);
             }
         })
@@ -211,6 +227,30 @@ function setupFormSubmission() {
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoading = submitBtn.querySelector('.btn-loading');
     const resultDiv = document.getElementById('submission-result');
+    const challengeSelect = document.getElementById('challenge-select');
+    
+    // Handle challenge selection changes
+    challengeSelect.addEventListener('change', function() {
+        const selectedChallenge = this.value;
+        
+        // Get elements with safety checks
+        const qpyFileInput = document.getElementById('qpy-file');
+        const qpyFileGroup = qpyFileInput ? qpyFileInput.closest('.form-group') : null;
+        const expectationValueGroup = document.getElementById('expectation-value-group');
+        const expectationValueInput = document.getElementById('expectation-value');
+        
+        // Reset all fields (with comprehensive null checks)
+        try {
+            if (qpyFileGroup) qpyFileGroup.style.display = 'block';
+            if (expectationValueGroup) expectationValueGroup.style.display = 'none';
+            if (expectationValueInput) expectationValueInput.required = false;
+            
+            // All challenges now use .qpy files only - no special handling needed
+        } catch (error) {
+            console.error('Error updating form fields:', error);
+        }
+        // Note: All challenges now require .qpy file only
+    });
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -224,25 +264,45 @@ function setupFormSubmission() {
         // Get form data
         const formData = new FormData(form);
         const challengeSelect = document.getElementById('challenge-select');
+        const selectedChallenge = challengeSelect.value;
         const email = document.getElementById('email');
-        const fileInput = document.getElementById('qpy-file');
+        const qpyFileInput = document.getElementById('qpy-file');
+        const expectationValueInput = document.getElementById('expectation-value');
 
-        // Validate file
-        if (!validateFile(fileInput.files[0])) {
+        // Validate file - all challenges now use .qpy files
+        if (!validateFile(qpyFileInput.files[0])) {
             showSubmissionResult('error', 'Please upload a valid .qpy file (max 10MB)');
             resetSubmitButton();
             return;
         }
+        
+        // Note: All challenges now require .qpy file only
 
         try {
             // Submit to API
             const response = await simulateSubmission(formData);
             
             const maxScore = response.max_score || 100;
-            showSubmissionResult('success', `Trail solution submitted successfully! Your submission for "${challengeSelect.options[challengeSelect.selectedIndex].text}" has been received. Score: ${response.score?.toFixed(1) || 'N/A'}/${maxScore}`);
+            let successMessage = `Trail solution submitted successfully! Your submission for "${challengeSelect.options[challengeSelect.selectedIndex].text}" has been received. Score: ${response.score?.toFixed(1) || 'N/A'}/${maxScore}`;
+            
+            // Add test cases info for parity-time challenge
+            if (selectedChallenge === 'parity-time' && response.analysis) {
+                const casesPassed = response.analysis.cases_passed || 0;
+                const totalCases = response.analysis.total_cases || 5;
+                successMessage += `\n\nTest Cases Passed: ${casesPassed}/${totalCases}`;
+            }
+            
+            showSubmissionResult('success', successMessage);
             
             // Reset form
             form.reset();
+            
+            // Reset field visibility (with null checks)
+            const qpyFileGroup = document.getElementById('qpy-file')?.closest('.form-group');
+            const expectationValueGroup = document.getElementById('expectation-value-group');
+            
+            if (qpyFileGroup) qpyFileGroup.style.display = 'block';
+            if (expectationValueGroup) expectationValueGroup.style.display = 'none';
             
             // Reload leaderboard after successful submission
             setTimeout(loadLeaderboard, 1000);
@@ -280,14 +340,15 @@ function validateFile(file) {
 }
 
 function setupFileUpload() {
-    const fileInput = document.getElementById('qpy-file');
-    const container = fileInput.closest('.file-upload-container');
+    const qpyFileInput = document.getElementById('qpy-file');
+    const qpyContainer = qpyFileInput.closest('.file-upload-container');
     
-    fileInput.addEventListener('change', function(e) {
+    // Setup QPY file upload
+    qpyFileInput.addEventListener('change', function(e) {
         const file = e.target.files[0];
         
         // Remove any existing file info
-        const existingInfo = container.querySelector('.file-selected-info');
+        const existingInfo = qpyContainer.querySelector('.file-selected-info');
         if (existingInfo) {
             existingInfo.remove();
         }
@@ -302,7 +363,7 @@ function setupFileUpload() {
                     ${validateFile(file) ? '✓ Valid .qpy file' : '✗ Invalid file or too large'}
                 </p>
             `;
-            container.appendChild(fileInfo);
+            qpyContainer.appendChild(fileInfo);
         }
     });
 }
