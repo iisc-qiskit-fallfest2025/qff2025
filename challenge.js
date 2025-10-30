@@ -253,10 +253,8 @@ function setupFormSubmission() {
             pyFileGroup.style.display = 'block';
             qpyFileInput.required = false;
             pyFileInput.required = true;
-        } else if (selectedChallenge === 'pauli-chronicles') {
-            expectationValueGroup.style.display = 'block';
-            expectationValueInput.required = true;
         }
+        // Note: pauli-chronicles now only requires .qpy file, no expectation value
     });
 
     form.addEventListener('submit', async function(e) {
@@ -292,12 +290,7 @@ function setupFormSubmission() {
             }
         }
         
-        // Validate expectation value for Pauli Chronicles
-        if (selectedChallenge === 'pauli-chronicles' && !expectationValueInput.value) {
-            showSubmissionResult('error', 'Please enter the expectation value for Pauli Chronicles challenge');
-            resetSubmitButton();
-            return;
-        }
+        // Note: Pauli Chronicles no longer requires expectation value validation
 
         try {
             // Submit to API
