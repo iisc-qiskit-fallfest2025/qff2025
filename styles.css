@@ -230,6 +230,7 @@ img {
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+    margin: 0.8rem;
 }
 
 .day-link-btn {
