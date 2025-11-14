@@ -1,50 +1,70 @@
 # IISc Qiskit Fall Fest 2025
 
-A quantum computing educational website for the **IISc Qiskit Fall Fest 2025** event. This project includes educational materials, challenges, and resources for learning quantum computing with Qiskit.
+A quantum computing educational website for the **IISc Qiskit Fall Fest 2025** event hosted on GitHub Pages.
 
 ## 🚀 Features
 
 - **Interactive Website**: Modern, responsive design showcasing the Quantum Fall Fest event
+- **Certificate Generation**: Automated certificate generation for participants and winners
+- **Registration Verification**: Real-time email verification against registration database
 - **Educational Materials**: Jupyter notebooks with Qiskit tutorials and hands-on exercises
 - **Quantum Challenges**: Interactive challenges for learning quantum computing concepts
-- **Speaker Information**: Details about speakers and their sessions
-- **Schedule & Event Information**: Complete event schedule and details
+- **Leaderboard**: Real-time challenge leaderboard
 
 ## 📁 Project Structure
 
 ```text
+qff2025/
 ├── index.html              # Main landing page
 ├── challenge.html          # Quantum challenges page
 ├── styles.css              # Main stylesheet
 ├── script.js               # Main JavaScript functionality
 ├── challenge.js            # Challenge-specific JavaScript
-├── main.py                 # Python app for Google Cloud deployment
-├── requirements.txt        # Python dependencies
-├── app.yaml               # Google Cloud App Engine configuration
-├── assets/                # Images and visual assets
-│   ├── speaker photos/    # Speaker profile images
-│   ├── logos/            # Event and sponsor logos
-│   └── backgrounds/      # Background images and graphics
-└── material/             # Educational content
-    └── day-1/           # Day 1 materials
-        ├── Qiskit 101 Hands-on.ipynb
-        ├── Qiskit 101 Hands-on-solution.ipynb
-        ├── Qiskit_101_Live_Coding_session.ipynb
-        ├── Janani_Slides.pdf
-        └── Venkat_Slides.pdf
+├── registration-check.js   # Registration verification utility
+├── assets/                 # Images and visual assets
+└── material/               # Educational content (Jupyter notebooks, slides)
 ```
 
 ## 🛠️ Technologies Used
 
-- **Frontend**: HTML5, CSS3, JavaScript
+- **Frontend**: HTML5, CSS3, JavaScript (GitHub Pages)
+- **Backend**: Google Cloud Functions (Gen 2)
+- **Services**:
+  - Certificate Generator (Cloud Run)
+  - Registration Checker (Cloud Function)
+  - Challenge Submission (Cloud Run)
+  - Leaderboard (Cloud Run)
+- **Storage**: Google Cloud Storage
 - **Quantum Computing**: Qiskit, Jupyter Notebooks
-- **Deployment**: Google Cloud App Engine
-- **Version Control**: Git
+
+## 🌐 Deployment
+
+This website is deployed on **GitHub Pages** and uses GCP Cloud Functions for backend operations:
+
+### Frontend (GitHub Pages)
+```bash
+# Simply push to the main branch
+git push origin main
+```
+
+### Backend Functions (Already Deployed)
+- **Certificate Generator**: `https://certificate-generator-916823407631.us-central1.run.app`
+- **Registration Check**: `https://check-registration-ab3dammvgq-uc.a.run.app`
+- **Submit Challenge**: `https://submit-challenge-916823407631.us-central1.run.app`
+- **Leaderboard**: `https://get-leaderboard-916823407631.us-central1.run.app`
+
+## 📝 Configuration
+
+All backend endpoints are configured in the JavaScript files:
+- `script.js` - Certificate API endpoint
+- `registration-check.js` - Registration verification endpoint
+- `challenge.js` - Challenge submission and leaderboard endpoints
+
+No additional configuration needed for GitHub Pages deployment.
 
 ## 📚 Educational Materials
 
 The `material/` directory contains:
-
 - **Qiskit 101 Hands-on**: Introduction to quantum computing with Qiskit
 - **Live Coding Sessions**: Interactive coding examples
 - **Speaker Slides**: Presentation materials from expert speakers

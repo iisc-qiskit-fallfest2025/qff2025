@@ -1,5 +1,14 @@
 // Eigen Trails page functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the challenge page by looking for key elements
+    const challengePageIndicator = document.getElementById('leaderboard-section') || 
+                                   document.getElementById('challenge-submission');
+    
+    if (!challengePageIndicator) {
+        console.log('Not on challenge page - skipping challenge.js initialization');
+        return;
+    }
+    
     checkChallengeAvailability();
     setupFormSubmission();
     setupFileUpload();
@@ -119,6 +128,9 @@ function startCountdownTimer() {
 const API_BASE_URL = 'https://challenge-backend-dot-exalted-tempo-322013.el.r.appspot.com';
 const SUBMIT_ENDPOINT = `${API_BASE_URL}/challenge-backend`;
 const LEADERBOARD_ENDPOINT = `${API_BASE_URL}/challenge-backend`;
+
+// Registration verification is handled by registration-check.js
+// Use window.RegistrationChecker.isEmailRegistered(email) to check registration
 
 function loadLeaderboard() {
     const loadingElement = document.getElementById('leaderboard-loading');
@@ -282,10 +294,22 @@ function maskEmail(email) {
 function setupFormSubmission() {
     const form = document.getElementById('challenge-form');
     const submitBtn = document.getElementById('submit-btn');
+    
+    // Check if required elements exist
+    if (!form || !submitBtn) {
+        console.log('Challenge form elements not found - skipping form setup');
+        return;
+    }
+    
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoading = submitBtn.querySelector('.btn-loading');
     const resultDiv = document.getElementById('submission-result');
     const challengeSelect = document.getElementById('challenge-select');
+    
+    if (!btnText || !btnLoading || !resultDiv || !challengeSelect) {
+        console.warn('Some form elements missing - form may not work correctly');
+        return;
+    }
     
     // Handle challenge selection changes
     challengeSelect.addEventListener('change', function() {
@@ -323,9 +347,25 @@ function setupFormSubmission() {
         const formData = new FormData(form);
         const challengeSelect = document.getElementById('challenge-select');
         const selectedChallenge = challengeSelect.value;
-        const email = document.getElementById('email');
+        const emailInput = document.getElementById('email');
+        const email = emailInput.value.trim();
         const qpyFileInput = document.getElementById('qpy-file');
         const expectationValueInput = document.getElementById('expectation-value');
+
+        // Check if email is registered
+        try {
+            showSubmissionResult('info', 'Verifying registration...');
+            const isRegistered = await window.RegistrationChecker.isEmailRegistered(email);
+            
+            if (!isRegistered) {
+                showSubmissionResult('error', 'Email not registered! Please register for QFF 2025 first. If you have already registered, please use the same email address you used during registration.');
+                resetSubmitButton();
+                return;
+            }
+        } catch (error) {
+            console.error('Registration check error:', error);
+            // Continue with submission if registration check fails (fail open)
+        }
 
         // Validate file - all challenges now use .qpy files
         if (!validateFile(qpyFileInput.files[0])) {
@@ -399,7 +439,18 @@ function validateFile(file) {
 
 function setupFileUpload() {
     const qpyFileInput = document.getElementById('qpy-file');
+    
+    if (!qpyFileInput) {
+        console.log('File upload elements not found - skipping file upload setup');
+        return;
+    }
+    
     const qpyContainer = qpyFileInput.closest('.file-upload-container');
+    
+    if (!qpyContainer) {
+        console.warn('File upload container not found');
+        return;
+    }
     
     // Setup QPY file upload
     qpyFileInput.addEventListener('change', function(e) {

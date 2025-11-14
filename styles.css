@@ -260,7 +260,7 @@ img {
 }
 
 .day-links-section .container {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     background: linear-gradient(135deg, rgba(26, 35, 50, 0.95), rgba(15, 23, 42, 0.95));
     border: 2px solid rgba(168, 85, 247, 0.4);
@@ -271,6 +271,13 @@ img {
                 0 4px 20px rgba(168, 85, 247, 0.2);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: start;
 }
 
 .day-links-section .container:hover {
@@ -1013,6 +1020,11 @@ img {
     .day-links-section .container {
         padding: 1.5rem 1rem;
         border-radius: 12px;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .day-links-header {
@@ -2351,6 +2363,11 @@ img {
     .day-links-section .container {
         padding: 1.75rem 1.25rem;
         border-radius: 14px;
+    }
+
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
     .day-links-header {
